@@ -1,0 +1,211 @@
+baseurl      = "http://localhost"
+theme = 'hugo-brewm'
+## Enable Git information for pages, (e.g. lastMod date information)
+enableGitInfo = true
+## Convert all URLs to absolute URLs
+canonifyURLs = true
+## Default language for content
+defaultContentLanguage = 'en'
+## Put default language in subdirectory
+defaultContentLanguageInSubdir = false
+## Generate a robots.txt
+enableRobotsTXT = true
+## Use sections for main menu
+# sectionPagesMenu = 'main'
+## Files to ignore when building site
+ignoreFiles = [ '\.redacted', '\.old','\.bak', '\.tmp', '\.swp', '\.DS_Store']
+
+## markup configuration
+[markup]
+    [markup.highlight]
+        ## Enable code fence highlighting
+        codeFences = true
+        ## Use hugo-brewm classes for verbatim styling
+        noClasses = false
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+        unsafe = true
+    # [markup.goldmark.extensions]
+    #   [markup.goldmark.extensions.passthrough]
+    #     enable = true
+    #     [markup.goldmark.extensions.passthrough.delimiters]
+    #       block = [['\[', '\]'], ['$$', '$$']]
+    #       inline = [['\(', '\)']]
+## Sitemap configuration
+[sitemap]
+    ## Change frequency setting (will affect posts listings layout): 'always', 'hourly', 'daily', 'weekly', 'monthly', 'yearly', 'never'
+    changeFreq = 'monthly'
+
+## Taxonomy register
+[taxonomies]
+    # category = 'categories'
+    # tag = 'tags'
+    # author = 'author'
+    # series = 'series'
+    # lenses = 'lenses'
+    # cameras = 'cameras'
+
+## Site parameters
+[params]
+    
+    ## Site title
+    title = "Titouan Renard"
+    ## Site description
+    description = "Titouan Renard's Website"
+    ## Copyright notice on colophon
+    copyright = "Copyright 2025 © Titouan Renard"
+    ## Hide "powered by hugo" on colophon
+    HideHugoCredit = false
+    ## Enable extended metadata (social cards)
+    extMeta = false
+    ## Enable coffee metric
+    coffeeStat = false
+    ## Default social card image, recommended resolution: 1200 x 630px
+    # images = "example.com/img/social-share.jpg"
+    ## Do not block AI user agent for robot.txt
+    AllowAIRobots = false
+    ## or BearMode--Minimize clutter for small site; Disable breadcrumbs menu, share button, related posts, colophon and redaction history.
+    ZenMode = false
+    ## Disable black background on main-footer
+    DisableFootBar = true
+    ## Merge site license, footer menu and coffee stat
+    unifiedFooter = true
+    math = true
+    
+    ## At the moment, analytics can be added manually by creating a custom template at `mysite/layouts/partials/analytics.html`
+    [params.analytics]
+        ## Choose where to append analytics script: use 'head' to place within <head> tags, or 'body' to place before closing </body> tag.
+        append = 'body'
+
+    ## Author information
+    [params.author]
+        ## site author's name
+        name = 'Titouan Renard'
+        ## Author's email
+        email = 'titouan.renard@unige.etu.ch'
+        ## Other method to customize author and co-authors information
+        coauthor = [
+            {name = "A.N. Other", bio = "Lorem ipsum dolor sit amet."}
+        ]
+
+    ## Comments configuration
+    [params.comments]
+        ## Disable comments (disable fediverse comments)
+        disabled = true
+        ## Comment platform selection, pending rule implementation
+        # platform = 'giscus'
+
+    ## Favicon configuration
+    [params.favicon]
+        png = '/favicon-96x96.png'
+        svg = '/favicon.svg'
+        ico = '/favicon.ico'
+        apple = '/apple-touch-icon.png'
+        appTitle = 'App Title'
+        webmanifest = '/site.webmanifest'
+
+
+    ## Feed display settings
+    [params.feed]
+        ## Enable flowlines
+        flowlines = true
+        ## Limit number of flowlines with maximum 42
+        flowlinesLimit = 21
+        ## Overide Flowlines illustration
+        OverrideFlowlinesDir = 'https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/'
+        ## Illustration extension on overiding flowlines
+        flowlinesExt = 'svg'
+
+
+    ## Home page display settings
+    [params.home]
+        ## Disable slide carousel
+        disableSlide = false
+        ## Disable taxonomy listing carousel
+        disableListing = false
+        ## Select taxonomy listing to be featured
+        # featuredListing = ['categories', 'series', 'author', 'cameras', 'lenses']
+        ## include section nodes in json
+        includeSectionInJson = false
+
+    ## Logo configuration
+    [params.logo]
+        ## Light mode logo mark
+        logoMark = 'https://example.com/logoMark.svg'
+        ## Dark mode logo mark
+        logoMarkDark = 'https://example.com/logoMarkDark.svg'
+        ## Enable logo type
+        logoType = true
+
+    ## Post display settings
+    [params.posts]
+        ## Enable text justification
+        justifying = true
+        ## Disable paragraph indentation
+        noIndent = true
+        ## Use sans-serif fonts as default
+        sfdefault = false
+        ## Show colophon section (including QR code)
+        colophon = false
+        ## disable redaction history
+        disableHistory = false
+        ## Show related content
+        related = true
+        ## override maximum series/related post count
+        # RelatedLimit = 5
+        ## Show share buttons
+        share = false
+        ## enable section numbering
+        secnum = false
+
+    ## Search configuration
+    [params.RSS]
+        limit = 15 # item limit default: 15
+        content = 15 # limit item with full content
+
+    ## Search configuration
+    [params.search]
+        ## Enable search functionality, please index your site first
+        enable = false
+        ## Use pagefind search when javascript enabled, currently only 'pagefind' is supported, further options to be determined
+        pagefind = false
+        ## fallback searchbox when javascript disabled, currently the options limited to 'mojeek', otherwise duckduckgo will be used
+        # fallback = 'mojeek'
+
+    ## Extended Metadata and Social card configuration
+    [params.socialCard]
+        ## Enable twitter and opengraph social cards (same as .Params.extMeta)
+        enable = false
+        ## Default social card image, same as .Params.images
+        # images = "img/social-share.jpg"
+        ## Enable Twitter cards
+        # twitter = false
+        ## Twitter creator handle
+        # twitterCreator = "@username"
+        ## Twitter site handle
+        # twitterSite = "@username"
+
+        ## Enable OpenGraph
+        # opengraph = true
+        ## Facebook App ID
+        # facebookAppID = "123456789"
+        ## Facebook Admin ID
+        # facebookAdmin = "USER_ID"
+
+        ## Schema.org (EXPERIMENTAL, not fully supported body tags)
+        # schema = true
+        ## JsonLD (EXPERIMENTAL, cannot validate permalink)
+        # jsonLD = true
+
+    ## Typography settings
+    [params.typeface]
+        ## Use web safe fonts (will overide font selection below)
+        webSafe = false
+        ## Serif font selection: 'Cormorant' 'EB Garamond' and 'crimson' (default)
+        roman = 'crimson'
+        ## Sans-serif font selection: 'Inter' 'Montserrat' 'Rorasio' and 'Lexica Ultralegible' (default)
+        sans = 'inter'
+        ## Host fonts on local host instead of GitHub
+        localHost = true
+        ## Reduce icon subset for base-ui to only 38 icon (save up to 15KB)
+        minimalUI = true

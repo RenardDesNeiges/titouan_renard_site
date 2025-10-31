@@ -1,0 +1,10 @@
+[[menu.main]]
+    identifier = "about"
+    name = "About"
+    pageRef = "/about"
+
+    [[menu.main]]
+        identifier = "about-author"
+        name = "Author"
+        pageRef = "/about/author"
+        parent = "about"
