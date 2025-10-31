@@ -2,32 +2,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://titouanrenard.eu/</loc>
     <lastmod>2025-10-31T23:28:07+01:00</lastmod>
     <changefreq>monthly</changefreq>
     </url>
   <url>
-    <loc>http://localhost:1313/post/basics_of_input_output/</loc>
+    <loc>https://titouanrenard.eu/post/</loc>
     <lastmod>2025-10-31T23:28:07+01:00</lastmod>
     <changefreq>monthly</changefreq>
     </url>
   <url>
-    <loc>http://localhost:1313/post/</loc>
-    <lastmod>2025-10-31T23:28:07+01:00</lastmod>
-    <changefreq>monthly</changefreq>
-    </url>
-  <url>
-    <loc>http://localhost:1313/post/gaillard_oct_2025/</loc>
+    <loc>https://titouanrenard.eu/post/gaillard_oct_2025/</loc>
     <lastmod>2025-10-31T13:13:27+01:00</lastmod>
     <changefreq>monthly</changefreq>
     </url>
   <url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://titouanrenard.eu/about/</loc>
     
     <changefreq>monthly</changefreq>
     </url>
   <url>
-    <loc>http://localhost:1313/publications/</loc>
+    <loc>https://titouanrenard.eu/publications/</loc>
     
     <changefreq>monthly</changefreq>
     </url>
