@@ -1,4 +1,4 @@
-Sitemap: https://renarddesneiges.github.io/sitemap.xml
+Sitemap: https://renarddesneiges.github.io/titouan_renard_site/sitemap.xml
 User-agent: *
 Disallow:
 User-agent: AI2Bot
