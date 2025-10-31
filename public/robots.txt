@@ -1,4 +1,4 @@
-Sitemap: https://titouanreanrd.eu/sitemap.xml
+Sitemap: https://titouanrenard.eu/sitemap.xml
 User-agent: *
 Disallow:
 User-agent: AI2Bot

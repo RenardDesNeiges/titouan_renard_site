@@ -1,4 +1,4 @@
-baseurl      = "https://titouanreanrd.eu"
+baseurl      = "https://titouanrenard.eu"
 theme = 'hugo-brewm'
 ## Enable Git information for pages, (e.g. lastMod date information)
 enableGitInfo = false
