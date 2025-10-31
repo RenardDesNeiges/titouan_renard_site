@@ -8,25 +8,24 @@ author = 'Titouan Renard'
 title = 'The Swiss Debt Brake: Making Sense of an Apparent Paradox'
 +++
 
-<!-- {{</* plotly json="/plots/Gaillard_Debt_To_GDP_creditors.json" height="500px" */>}} -->
-{{< plotly json=plots/Gaillard_Debt_To_GDP_creditors.json height="400px">}}
 
+Switzerland is planning deep cuts to public services, education, and research. They are all planned as a consequence of the so called "debt brake," a rule designed to prevent overspending. But here’s a puzzle: Switzerland has less debt than its neighbours and, by many expert accounts, has plenty of financial room to manoeuver. So why is it choosing austerity? This apparent paradox is one worth pondering about in a situation of increased economic uncertainty in the face of the Trump 2.0 initiated tarifs. In this short note I argue that the two most conventional explanation on the matter do not hold: the kind of austerity politics led by Switzerland is neither *necessary* (for financial stability) nor *madness* (as some conversly argue). I argue that investigating this issue is only possible by looking at the relationships of production themselves. In other words the push for budget cuts might have less to do with pure economics than with protecting a certain political and economic order.
 
-
-<!-- <img src="media/image1.png" style="width:6.29444in;height:3.67153in" /> -->
-
+# The Gaillard Budget Cuts
 <!-- Figure 1. UNIGE personal mobilisation against the budget cuts
 recommended by Gaillard et al. (2024). -->
+{{< plotly json=plots/Gaillard_BudgetCut_By_Categories.json height="400px">}}
 
 The contents of the report “*re-examining the tasks and subsidies*” of the Swiss Confederation lay down a roadmap for what almost looks like an austerity program {{< marginnote >}}Gaillard, Serge, Jacques Bourgeois, Aymo Brunetti, Christoph Schaltegger, and Ursula Schneider Schüttel. « Réexamen 2024 des tâches et des subventions - Rapport à l’attention du Conseil fédéral », 25 août 2024.{{< /marginnote >}}. The proposition to cut down the total spending of the state by 4.9 CHF billion / year by 2030, which has led to mobilisation, especially the education sector, implies drastic reductions of spending in key areas of the confederation’s public policy, including but not limited to: climate and energy, research and integration of asylum.
 
-Astonishingly, out of 66 pages, the report dedicates a mere 6 to justifying why public spending should be cut. In short, the motivation for the limitation of public spending boils down to the application of the constitutionally enforced debt brake, a legislative device explicitly aimed at preventing the confederation from accumulating debt. In view of the authors of the report, the argumentation for slashing public spending thus goes as follows. Noting that the COVID-19 pandemic and the economic consequences of the Ukraine war have caused an increase in the Confederation’s spending relative to its income, the authors conclude that “*if no corrective action is taken, this increase will lead to major structural deficits in the years to come*” {{< marginnote >}}*Ibid.*a p.3 (Unless mentioned otherwise, all translations into English are by the author.){{< /marginnote >}}. Since the prevailing wisdom states that any increase in taxation level should be avoided{{< marginnote >}} It is worth mentioning that a small section of the report is
+Astonishingly, out of 66 pages, the report dedicates a mere 6 to justifying why public spending should be cut. In short, the motivation for the limitation of public spending boils down to the application of the constitutionally enforced debt brake, a legislative device explicitly aimed at preventing the confederation from accumulating debt. In view of the authors of the report, the argumentation for slashing public spending thus goes as follows. Noting that the COVID-19 pandemic and the economic consequences of the Ukraine war have caused an increase in the Confederation’s spending relative to its income, the authors conclude that “*if no corrective action is taken, this increase will lead to major structural deficits in the years to come*” {{< marginnote >}}*Ibid.* p.3 (Unless mentioned otherwise, all translations into English are of by the author.){{< /marginnote >}}. Since the prevailing wisdom states that any increase in taxation level should be avoided{{< marginnote >}} It is worth mentioning that a small section of the report is
 dedicated to the evaluation of an alternative scenario where fiscal
 revenue is lightly increased, allowing for a slightly less aggressive
 reduction of spending. But even in that alternative scenario, public
 spending is massively reduced. {{< /marginnote >}}, the only way to comply with the constitutional obligation to balance the budget imposed by the debt brake is a massive slashing of public spending. In the following critical summary, I will investigate the rationale behind such budget cuts and present a critical view of it. This will lead us to an apparent paradox: why does a state with relatively few constraints on its fiscal space, such as Switzerland, choose to limit its actions and forgo the possible benefits of greater state intervention? Concluding, I will attempt to make sense of this paradox by turning our attention to the political aspects of *austerian* policies.
 
 # *Sound* Finance
+{{< plotly json=plots/Gaillard_Debt_To_GDP_creditors.json height="400px">}}
 
 The section of the report dedicated to the debt brake provides us with
 some insight into the rationale behind such a policy instrument. Following a very orthodox implementation of the New Keynesian view on fiscal policy, the authors explain that the arguments for imposing such a hard constraint on public spending are twofold. First, the authors argue that reducing the debt increases *fiscal space*. They write that “*a low debt ratio also provides ample room for manoeuvre for fiscal policy in the long term, which is particularly desirable in view of the continuing ageing of the population and its foreseeable consequences for social insurance*”{{< marginnote >}}*Ibid.* p.13{{< /marginnote >}}. Second, they argue that the debt break acts as an automatic stabilizer “*it allows cyclical deficits in periods of under-utilisation of production capacity and requires cyclical surpluses in periods of over-utilisation*”{{< marginnote >}}*Ibid.* p.13{{< /marginnote >}}. According to this view, in “*normal times*”, the debt brake allows the government to accumulate surpluses, reducing the debt, which in “*extraordinary circumstances such as severe economic crises*”, gives more room for action to the federal government to spend accordingly. This argumentation provides us with a prime example of the *sound finance* conception of fiscal space. In this paradigm, money is assumed to be an exogenous medium of exchange, limited in supply. Often supporters of this view also assume some version of the *quantity theory of money* which posits that the velocity of money is constant and that any increase in the quantity of money will translate into an increase of prices (inflation). These views lead the supporters of the sound finance paradigm to argue that the government spending must originate in the private sector. Governments are thus understood to be subject to the same intertemporal constraints as enterprises and households and need to ensure that revenue covers their expenses. These constraints are a consequence of the government’s budget, which must satisfy the following accounting equation:
@@ -45,10 +44,10 @@ The aforementioned assumptions (exogenous money supply, the quantity theory of m
 
 The effect of the debt brake is clearly visible when comparing the Swiss
 debt level to that of its European neighbours. Here, it
-is worth noting that with a public debt to GDP ratio of 14% (in 2022),
+is worth noting that with a public "*debt to GDP ratio*"{{< marginnote >}}Here we write "*debt to GDP ratio*" in quotes because it should be argued that it is not, in fact, a ratio but rather a measurement of Debt in years of GDP (for instance France has a bit more than a year of its own GDP worth of debt).{{< /marginnote >}} of 39% (in 2024),
 the confederation has a debt much lower than its European neighbours
-(the same year, the French debt to GDP ratio was 92%, Germany’s 45% and
-Italy’s 143%) all of which are managing to sustain their debt burden.
+(the same year, the French debt to GDP ratio was 116%, Germany’s 64% and
+Italy’s 148%) all of which are managing to sustain their debt burden.
 But of course, the argument behind the debt brake is not that the debt
 should be kept sustainable at a given time, but rather that it should be
 kept low to ensure the ability to accumulate sustainable debt in times
@@ -115,3 +114,7 @@ policies are not irrational, they produce an ensemble of effects which
 sanctify capitalist social relations, making them appear as natural, and
 thus have a direct impact on the social order which in turn preserves
 current and future profits.
+
+---
+
+This discussion was first written in the context of Prof. [Marc Morgan](https://www.marc-morgan.eu/)'s class "*Growth Distribution and Politics, Empirical Perspectives*" I have here adapted it a bit and took the time to update the data. 
