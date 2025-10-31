@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <!-- head.html --><!-- meta.html -->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basics Of Input Output Analysis | Titouan Renard</title>
+<meta name="author" content="Titouan Renard">
+<meta name="description" content="First given an IO table the tutorial shows how to recover the production matrix A as well as “emission coefficients” associated with satelite accounts …" >
+<link rel="canonical" href="http://localhost:1313/post/basics_of_input_output/">
+
+
+        <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-title" content="App Title" />
+        <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- js.html -->
+
+
+    <script src="http://localhost:1313/js/hugo-brewm.min.js" defer></script><!-- css.html -->
+
+
+    <link rel="stylesheet" href="http://localhost:1313/css/hugo-brewm.min.css">
+
+
+
+    <!-- css/inline.html -->
+    <style>
+         
+        body {max-width: 786px; margin: auto; padding: 2rem;}
+        img {max-width: 86vw;}
+            * p {text-indent: unset !important;}
+            article p {text-align: justify;}
+    </style>
+
+<script src="https://cdn.plot.ly/plotly-3.0.1.min.js"></script>
+<style>
+    svg {
+        display: inherit;
+    }
+</style>
+
+    
+        <!-- katex.html -->
+    <link href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" rel="stylesheet"
+        integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"
+        integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"
+        defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"
+        integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"
+        defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.getElementById('main-article'), {
+                delimiters: [
+                    {left: '$', right: '$', display: false},
+                    {left: '$$', right: '$$', display: true},
+                    {left: '\\(', right: '\\)', display: false},
+                    {left: '\\[', right: '\\]', display: true},
+                    {left: "\begin{equation}", right: "\end{equation}", display: true},
+                    {left: "\begin{align}", right: "\end{align}", display: true},
+                ],
+                throwOnError : false
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- header.html -->
+<header class="pagewidth">
+    <div id="background-header" class="background" aria-hidden="true"></div>
+    
+    <nav aria-label="Bypass">
+        <a id="to-content" href="#content" aria-label="Skip to Main Content">
+            <span>Skip to Main Content</span>
+            <kbd class="key" aria-hidden="true" data-key="c"></kbd>
+            <span class="screening" aria-hidden="true"></span>
+        </a>
+    </nav>
+    
+    <div id="logo">
+        <a href="http://localhost:1313/" aria-label="Titouan Renard" aria-description="Homepage">
+                <!-- logotype.html --><svg id="logotype" xmlns="http://www.w3.org/2000/svg" version="1.1" width="392pt" aria-label="Titouan Renard">
+            <text id="logotype__text" y="19.5pt" x="0">Titouan Renard</text>
+        </svg>
+        </a>
+        <hr class="hide"/>
+    </div>
+    
+    <details class="presentation" id="top-nav">
+        <summary class="on-deck">
+            <span class="t">Navigation</span>
+            <span class="menu-icon" role="presentation"></span>
+        </summary>
+        <nav tabindex="-1" aria-label="Top">
+            <!-- menu.html -->
+    <details id="has-main-menu" class="presentation" open>
+        <summary  class="hide"  aria-label="Main Menu">
+            <span>Main Menu</span>
+        </summary>
+            
+            <nav id="main-menu" aria-label="Main Menu">
+                <ul class="l1   has-childfree " role="presentation" tabindex="-1" >
+                    
+    
+        <li role="presentation" >
+    <a   class=on-deck href=/about/>
+        
+            <span>
+                About (CV)</span>
+    </a>
+        </li>
+        <li role="presentation" >
+    <a   class=on-deck href=/publications/>
+        
+            <span>
+                Publications</span>
+    </a>
+        </li>
+        <li role="presentation" >
+    <a   class=on-deck href=https://github.com/renarddesneiges/ rel=external noopener noreferrer nofollow target=_blank>
+        
+            <i class="icon sri">github</i>
+            <span>
+                GitHub</span>
+    </a>
+        </li>
+                </ul>
+            </nav>
+    </details>
+            
+            <!-- menu.html -->
+            <!-- i18n.html -->
+
+        </nav>
+        <div id="top-nav-screen" class="screening js-cpn" role="presentation" aria-hidden="true"></div>
+        <hr class="hide"/>
+    </details>
+</header>
+    
+    <!-- [main] baseof.html -->
+    <main id="page"class="page"
+        >
+        <!-- main/header.html -->
+        <header class="pagewidth">
+            <!-- nav.html -->
+<details class="presentation" aria-expanded="true" id="has-breadcrumb" open>
+    <summary id="breadcrumb" tabindex="-1">
+        <span>Breadcrumb</span>
+    </summary>
+        <nav aria-labelledby="breadcrumb">
+            <ul role="presentation" class="breadcrumb ">
+                    <!-- breadcrumb.html -->
+        <li>
+            <a href="http://localhost:1313/post/" aria-current="true">Posts
+            </a>
+        </li>
+    <li>
+        <a href="" aria-current="page" tabindex="-1">Basics Of Input Output Analysis
+        </a>
+    </li>
+            </ul>
+        </nav>
+</details>
+            <hr class="hide"/>
+        </header>
+        <div id="top" role="presentation">
+            
+        </div>
+        
+    <article id="main-article" class="pagewidth sf"
+        role="document" aria-labelledby="title"
+            data-pagefind-ignore="all">
+        <header aria-labelledby="title">
+            
+            <!-- title.html -->
+        <h1 id="title"
+            data-bionRead-safe
+            >Basics Of Input Output Analysis</h1>
+        </header>
+        <!-- audio.html -->
+        <section id="content" class="content " aria-labelledby="title" data-bionRead-safe>
+                <p>First given an IO table the tutorial shows how to recover the production matrix A as well as &ldquo;emission coefficients&rdquo; associated with satelite accounts (here for $CO_2$ emissions, hence the name).</p>
+<h2 id="an-example-2x2-io-table">An example 2x2 IO table</h2>
+<p>An IO matrix could look like that:</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Sector A</th>
+          <th>Sector B</th>
+          <th>Final Demand</th>
+          <th>Total Output</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Sector A</strong></td>
+          <td>$i_{AA}$</td>
+          <td>$i_{AB}$</td>
+          <td>$d_A$</td>
+          <td>$x_A$</td>
+      </tr>
+      <tr>
+          <td><strong>Sector B</strong></td>
+          <td>$i_{BA}$</td>
+          <td>$i_{BB}$</td>
+          <td>$d_B$</td>
+          <td>$x_B$</td>
+      </tr>
+      <tr>
+          <td><strong>Value Added</strong></td>
+          <td>$v_A$</td>
+          <td>$v_B$</td>
+          <td>0</td>
+          <td>$x_{VA}$</td>
+      </tr>
+      <tr>
+          <td><strong>Total Output</strong></td>
+          <td>$x_A'$</td>
+          <td>$x_B'$</td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<p>The following properties hold:</p>
+<p>
+$$ 
+ \begin{aligned} 
+	y &= v_A+v_B \\	
+	y &= d_A+d_B\\
+	x_A &= i_{AA}+i_{AB}+d_A\\
+	x_B &= i_{BA}+i_{BB}+d_B\\
+	x_A' &= i_{AA}+i_{BA}+v_A\\
+	x_B' &= i_{AB}+i_{BB}+v_B\\
+ \end{aligned} 
+ $$
+ <p>
+Further more, if monetary units are used: $x_A = x_A'$ and $x_B = x_B'$ hold.
+<p>Here is a numerical example:</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Sector A</th>
+          <th>Sector B</th>
+          <th>Final Demand</th>
+          <th>Total Output</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Sector A</strong></td>
+          <td>150</td>
+          <td>500</td>
+          <td>350</td>
+          <td>1000</td>
+      </tr>
+      <tr>
+          <td><strong>Sector B</strong></td>
+          <td>200</td>
+          <td>100</td>
+          <td>1700</td>
+          <td>2000</td>
+      </tr>
+      <tr>
+          <td><strong>Value Added</strong></td>
+          <td>650</td>
+          <td>1400</td>
+          <td>0</td>
+          <td>2050</td>
+      </tr>
+      <tr>
+          <td><strong>Total Output</strong></td>
+          <td>1000</td>
+          <td>2000</td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<p>The satellite accounts associate &ldquo;satellite varibales&rdquo; to production sectors, here we will assume they represent use of $CO_2$</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Sector A</th>
+          <th>Sector B</th>
+          <th>Final Demand</th>
+          <th>Total</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>CO2</strong></td>
+          <td>$s_A$</td>
+          <td>$s_B$</td>
+          <td>-</td>
+          <td>$s_T$</td>
+      </tr>
+  </tbody>
+</table>
+<p>They are most often in physical units (here in kilotons of $CO_2$), here is a numeric example:</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Sector A</th>
+          <th>Sector B</th>
+          <th>Final Demand</th>
+          <th>Total</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>CO2</strong></td>
+          <td>50</td>
+          <td>25</td>
+          <td>-</td>
+          <td>75</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="constructing-the-matrices">Constructing the matrices</h2>
+<p>The key matrix is the technological coefficients&rsquo; matrix $A$, which is constructed as follows (for a 2 sectors example):</p>
+<p>
+$$ 
+ \begin{aligned} 
+ A=
+ \begin{bmatrix} 
+ \frac{ i_{AA} }{ x_A } & \frac{ i_{AB} }{ x_B' } \\ 
+ \frac{ i_{BA} }{ x_A } & \frac{ i_{BB} }{ x_B' } \\
+ \end{bmatrix} 
+ \end{aligned} 
+ $$
+ In our example we have:
+ $$ 
+ \begin{aligned} 
+ A = \begin{bmatrix} 
+ 0.150 & 0.250 \\ 
+ 0.200 & 0.050
+  \end{bmatrix} 
+ \end{aligned} 
+ $$
+</p>
+<p>Let the emission vector be given by:</p>
+<p>$$
+\begin{aligned}
+e = \begin{bmatrix} s_A &amp; s_B \end{bmatrix}
+\end{aligned}
+$$</p>
+<p>We also define the emission coefficient vector $b$ as:
+$$
+\begin{aligned}
+b = \begin{bmatrix} \frac{ s_A }{ x_A }&amp;  \frac{ x_B }{ t_B } \end{bmatrix}
+\end{aligned}
+$$
+in our case we have:
+$$
+\begin{aligned}
+b = \begin{bmatrix} 0.050 &amp; 0.0125 \end{bmatrix}
+\end{aligned}
+$$
+Let $x$ denote the total output vector as:
+$$
+\begin{aligned}
+x = \begin{bmatrix} x_A \ x_B \end{bmatrix}
+\end{aligned}
+$$</p>
+<p>Let $y$ denote the final demand vector as:
+$$
+\begin{aligned}
+y = \begin{bmatrix} d_A \ d_B \end{bmatrix}
+\end{aligned}
+$$
+in our case:
+$$
+\begin{aligned}
+y = \begin{bmatrix} 350 \ 1700 \end{bmatrix}
+\end{aligned}
+$$</p>
+<h2 id="the-leontiev-mutliplier">The Leontiev mutliplier</h2>
+<p>We are now ready to compute a <a href="https://en.wikipedia.org/wiki/Wassily_Leontief" target="_blank" rel="external noopener noreferrer nofollow">Leontief</a> mutliplier $B$ :
+$$
+\begin{aligned}
+B = (I-A)^{-1}
+\end{aligned}
+$$</p>
+<p>The reason the mutliplier has this form is because it solves:</p>
+<p>
+$$ 
+ \begin{aligned} 
+ && x &= Ax + y \\
+ \iff &&  y &= (I-A)x\\
+ \iff &&  x &= (I-A)^{-1}y\\
+ \iff &&  x &=  By
+ \end{aligned} 
+ $$
+</p>
+<p>We can use the multiplier to recover total output
+$t$ from final demand as follows:</p>
+<p>
+$$ 
+\begin{aligned} 
+x = (I-A)^{-1} = B y
+\end{aligned} 
+$$
+</p>
+<p>Numerically we have:</p>
+<p>
+ $$ 
+ \begin{aligned} 
+ \overbrace{\begin{bmatrix} 1000 \\ 2000 \end{bmatrix} }^{=t}
+ = \overbrace{\begin{bmatrix} 1.25 & 0.33 \\ 0.26 & 1.12 \end{bmatrix}}^{=(I-A)^{-1}}\cdot 
+ \overbrace{\begin{bmatrix}  350 \\1700\end{bmatrix}}^{=y}
+ \end{aligned} 
+ $$
+</p>
+<p>As per the satelite accounts they simply relate the total output to the use of the <em>satellite quantity</em>:</p>
+<p>
+ $$ 
+ \begin{aligned} 
+ e = x \cdot b  
+ \end{aligned} 
+ $$
+</p>
+<p>which for a two sector model decomposes as:</p>
+<p>
+ $$ 
+ \begin{aligned} 
+ e = \begin{bmatrix} 
+ x_A \\ x_B
+  \end{bmatrix} 
+  \begin{bmatrix} 
+  b_A & b_B
+   \end{bmatrix}
+ \end{aligned} 
+ = \begin{bmatrix} x_A b_A\\ b_B b_B \end{bmatrix}
+ = \begin{bmatrix} s_A \\ s_B \end{bmatrix}
+ $$
+</p>
+<p>This allows to compute total satellite variable (here the total CO2 emitted) as:</p>
+<p>
+$$ 
+ \begin{aligned} 
+ s_ \text{tot} = b \cdot x
+ \end{aligned} 
+ $$
+ in our 2 sectors example this is:
+ $$ 
+ \begin{aligned} 
+ s_ \text{tot}  = s_A + s_B
+ \end{aligned} 
+ $$
+</p>
+<p>and naturally, we can plug in the expression for total output from demand to get:</p>
+<p>
+ $$ 
+ \begin{aligned} 
+ s_ \text{tot} = b \overbrace{B y }^{=x} 
+ \end{aligned} 
+ $$
+</p>
+<p>and hence we can get an &ldquo;<em>emission multiplier</em>&rdquo; $m_e$ as:</p>
+<p>
+ $$ 
+ \begin{aligned} 
+  m_e = b\cdot B 
+ \end{aligned} 
+ $$
+</p>
+<p>which is a vector, which allows through a scalar product to compute emissions, simply as $s_ \text{tot}= m_e\cdot y$.</p>
+<h2 id="attributing-emissions-per-sector">Attributing emissions per sector:</h2>
+<p>Consider the diagonal form of the vectors $b$ and $y$ (here expressed for the two sector example):</p>
+<p>
+$$ 
+ \begin{aligned} 
+ \text{diag} (b) &= 
+ \begin{bmatrix} b_A & 0 \\  0 & b_B \end{bmatrix}\\
+ \text{diag} (y) &= 
+ \begin{bmatrix} y_A & 0 \\  0 & y_B \end{bmatrix}\\
+ \end{aligned} 
+ $$
+</p>
+and consider the matrix $S$:
+<p>
+$$ 
+S=
+\begin{aligned} 
+& \text{diag} (b) \cdot B\cdot  \text{diag}(y)
+\end{aligned} 
+$$
+</p>
+<p>This gives us the sattelite quantities associated with production in each sector A for use in sector B:</p>
+<p>
+$$ 
+\begin{aligned} S=
+& \begin{bmatrix} b_A & 0 \\  0 & b_B \end{bmatrix}
+\begin{bmatrix} 
+    b_{AA} &  b_{AB} \\  
+    b_{BA} &  b_{BB} 
+\end{bmatrix}
+\begin{bmatrix} y_A & 0 \\  0 & y_B \end{bmatrix} 
+\end{aligned} 
+$$
+</p>
+        </section>
+    </article>
+        <div id="exclude" role="presentation">
+            <!-- excluded last block frome some RSS reader and browser reader mode -->
+            
+    <hr class="hide" style="margin: 1in 0;">
+    
+        <!-- main/footer.html -->
+    <hr class="hide">
+    <footer id="main-footer">
+            <div id="unified-footer"><p id="license">Copyright 2025 © Titouan Renard</p>
+                    <!-- menu.html -->
+            </div>
+    </footer>
+        </div>
+    </main>
+    <!-- footer.html -->
+<footer id="body-footer" class="pagewidth" style="display: none;">
+    <div id="background-footer" class="background hide" role="presentation" aria-hidden="true"></div>
+    <div id="focusMode"></div>
+    <!-- a11y.html --><details id="has-a11y" class="presentation js-details hide" name="on-deck" aria-haspopup="true" aria-labelledby="has-a11y-summary"
+    data-i18n-accessibility="Accessibility"
+    data-i18n-optimizeSR="Screen Reader Optimization"
+    data-i18n-optimizeSRdesc="Optimize display and resources for screen reader users who navigate with a pointer device."
+    data-i18n-colorSettings="Color Settings"
+    data-i18n-darkMode="Dark Mode"
+    data-i18n-light="Light"
+    data-i18n-dark="Dark"
+    data-i18n-contrast="Contrast"
+    data-i18n-lessContrast="Low"
+    data-i18n-moreContrast="High"
+    data-i18n-defaultContrast="Default"
+    data-i18n-colorPalette="Color Palette"
+    data-i18n-defaultColor="Default"
+    data-i18n-deuteranopia="Deuteranopia"
+    data-i18n-protanopia="Protanopia"
+    data-i18n-tritanopia="Tritanopia"
+    data-i18n-monochrome="Monochrome"
+    data-i18n-fontSize="Font Size"
+    data-i18n-baselineStretch="Baseline Stretch"
+    data-i18n-OpenDyslexic="Use OpenDyslexic Font"
+    data-i18n-menuControls="Accessibility Menu Controls"
+    data-i18n-save="Save"
+    data-i18n-reset="Reset"
+    data-i18n-close="Close"
+    data-i18n-bionRead="BionRead Mode"
+    data-i18n-focusMode="Focus Mode"
+    data-i18n-noLocalStorage="LocalStorage is not available in your browser. Settings won&#39;t be saved.">
+</details>
+
+
+    <div id="useBionRead" class="sri"></div>
+    <!-- [top] bypass block -->
+    <nav aria-label="Bypass">
+        <a id="to-top" class="srm" href="#top" title="To Content Top" accesskey="c" aria-keyshortcuts="c" aria-label="To Content Top">
+            <span class="t srt">To Content Top</span>
+            <kbd class="key" aria-hidden="true" data-key="c"></kbd>
+        </a>
+    </nav>
+</footer>
+    
+    <!-- [post] single.html -->
+    <div id="bionReadSnapshot" hidden></div>
+    <!-- [background] baseof.html -->
+    <div id="background-body" role="presentation" aria-hidden="true"></div>
+</html>
