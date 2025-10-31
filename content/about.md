@@ -1,16 +1,17 @@
 ---
 title: 'About Me'
-cover: '/images/portrait.jpeg'
 keepAspectRatio: true
 ---
 
+
+
 <!-- Below is a full-width figure. -->
-{{< figure
-  src="/images/portrait.jpeg"
+<!-- {{< figure
+  src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/22.svg"
   type="full"
  >}}
-{{< section "end" >}}
-<!-- ![My photo](/images/portrait.jpeg) -->
+{{< section "end" >}} -->
+![](https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/22.svg)
 
 ### Education
 - {{< marginpar >}}2025{{< /marginpar >}}**Master in Economy** (Erasmus semester), Barcelona, Spain, [Universitat de Barcelona](https://www.ub.edu/school-economics/master-in-economics/)

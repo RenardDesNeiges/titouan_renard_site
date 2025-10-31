@@ -18,6 +18,7 @@ enableRobotsTXT = true
 ignoreFiles = [ '\.redacted', '\.old','\.bak', '\.tmp', '\.swp', '\.DS_Store']
 
 [[menu.main]]
+    weight = 3
     identifier = "github"
     name = "GitHub"
     url = "https://github.com/renarddesneiges/"
@@ -28,11 +29,13 @@ ignoreFiles = [ '\.redacted', '\.old','\.bak', '\.tmp', '\.swp', '\.DS_Store']
 
 
 [[menu.main]]
+    weight = 1
     identifier = "about"
     name = "About (CV)"
     pageRef = "about"
 
 [[menu.main]]
+    weight = 2
     identifier = "publications"
     name = "Publications"
     pageRef = "publications"
@@ -87,7 +90,7 @@ ignoreFiles = [ '\.redacted', '\.old','\.bak', '\.tmp', '\.swp', '\.DS_Store']
     ## Do not block AI user agent for robot.txt
     AllowAIRobots = false
     ## or BearMode--Minimize clutter for small site; Disable breadcrumbs menu, share button, related posts, colophon and redaction history.
-    ZenMode = false
+    ZenMode = true
     ## Disable black background on main-footer
     DisableFootBar = true
     ## Merge site license, footer menu and coffee stat
