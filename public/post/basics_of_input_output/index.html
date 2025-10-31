@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
     <!-- head.html --><!-- meta.html -->
 
 <meta charset="utf-8">
@@ -8,8 +8,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Basics Of Input Output Analysis | Titouan Renard</title>
 <meta name="author" content="Titouan Renard">
-<meta name="description" content="First given an IO table the tutorial shows how to recover the production matrix A as well as “emission coefficients” associated with satelite accounts …" >
-<link rel="canonical" href="http://localhost:1313/post/basics_of_input_output/">
+<meta name="description" content="The idea of this short tutorial is to give an idea of how to work with a simple 2 sector input-output table, as well as a rough idea of what the …" >
+<link rel="canonical" href="https://titouanrenard.eu/post/basics_of_input_output/">
 
 
         <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
@@ -21,11 +21,12 @@
 
     <!-- js.html -->
 
+<script src="https://titouanrenard.eu/js/hugo-brewm.min.js"
+            integrity="sha384-XLx9glFnmrMCo3ygv1eVQ&#43;AUp/JCx9C1M8L2Ki6onxq0l3ZytYfAM/QYfi7WDAz/" crossorigin="anonymous"
+            defer></script><!-- css.html -->
 
-    <script src="http://localhost:1313/js/hugo-brewm.min.js" defer></script><!-- css.html -->
 
-
-    <link rel="stylesheet" href="http://localhost:1313/css/hugo-brewm.min.css">
+        <link rel="stylesheet" href="https://titouanrenard.eu/css/hugo-brewm.min.css" integrity="sha256-miUhpuGg1FlO61ID3XcMdA/3N8wdRkP/F5QDWKmh0J8=" crossorigin="anonymous">
 
 
 
@@ -86,7 +87,7 @@
     </nav>
     
     <div id="logo">
-        <a href="http://localhost:1313/" aria-label="Titouan Renard" aria-description="Homepage">
+        <a href="https://titouanrenard.eu/" aria-label="Titouan Renard" aria-description="Homepage">
                 <!-- logotype.html --><svg id="logotype" xmlns="http://www.w3.org/2000/svg" version="1.1" width="392pt" aria-label="Titouan Renard">
             <text id="logotype__text" y="19.5pt" x="0">Titouan Renard</text>
         </svg>
@@ -159,7 +160,7 @@
             <ul role="presentation" class="breadcrumb ">
                     <!-- breadcrumb.html -->
         <li>
-            <a href="http://localhost:1313/post/" aria-current="true">Posts
+            <a href="https://titouanrenard.eu/post/" aria-current="true">Posts
             </a>
         </li>
     <li>
@@ -187,7 +188,9 @@
         </header>
         <!-- audio.html -->
         <section id="content" class="content " aria-labelledby="title" data-bionRead-safe>
-                <p>First given an IO table the tutorial shows how to recover the production matrix A as well as &ldquo;emission coefficients&rdquo; associated with satelite accounts (here for $CO_2$ emissions, hence the name).</p>
+                <p>The idea of this short tutorial is to give an idea of how to work with a simple 2 sector input-output table, as well as a rough idea of what the <a href="https://en.wikipedia.org/wiki/Wassily_Leontief" target="_blank" rel="external noopener noreferrer nofollow">Leontief</a> multiplier is.</p>
+<p>The core idea of IO analysis is to model the interconnectedness of economic activities. In this short tutorial we will consider an extremely simple 2 sectors model where we have two interdependent sectors
+<code>A</code> and <code>B</code> and some final demand for the output of these two sectors (they are assumed to produced a single good). Furthermore, we will assume fixed production coefficients (no substitution) which is a very common assumption in IO, and which is pretty much a correct assumption to make in the short to medium run.</p>
 <h2 id="an-example-2x2-io-table">An example 2x2 IO table</h2>
 <p>An IO matrix could look like that:</p>
 <table>
@@ -205,14 +208,14 @@
           <td><strong>Sector A</strong></td>
           <td>$i_{AA}$</td>
           <td>$i_{AB}$</td>
-          <td>$d_A$</td>
+          <td>$y_A$</td>
           <td>$x_A$</td>
       </tr>
       <tr>
           <td><strong>Sector B</strong></td>
           <td>$i_{BA}$</td>
           <td>$i_{BB}$</td>
-          <td>$d_B$</td>
+          <td>$y_B$</td>
           <td>$x_B$</td>
       </tr>
       <tr>
@@ -231,6 +234,28 @@
       </tr>
   </tbody>
 </table>
+<p>So this is a table which represents what each sector ouptuts for consumption in what other sector, as well as what each sectors needs for production.</p>
+
+
+<div id="plots/DiGraph_IO_Tutorial.json" class="plotly" style="height:500px"></div>
+<script>
+async function loadPlotly() {
+    try {
+        const response = await fetch('\/plots\/DiGraph_IO_Tutorial.json');
+        const fig = await response.json();
+        var layout = fig.layout || {};
+        layout['modebar'] = {
+            orientation: 'h'
+        };
+        layout['margin'] = {l: 0, r: 0, t: 40, b: 40};
+        Plotly.newPlot('plots\/DiGraph_IO_Tutorial.json', fig.data, layout, {displaylogo: false, responsive: true});
+    } catch (error) {
+        console.error('Error loading plotly json:', error);
+    }
+}
+loadPlotly();
+</script>
+<p>The key intution here is that the IO table is essentially (not exactly but pretty much) the adjacency matrix of a <a href="https://en.wikipedia.org/wiki/Directed_graph" target="_blank" rel="external noopener noreferrer nofollow">directed graph</a> representing the flow of goods across sectors.</p>
 <p>The following properties hold:</p>
 <p>
 $$ 
@@ -287,7 +312,7 @@ Further more, if monetary units are used: $x_A = x_A'$ and $x_B = x_B'$ hold.
       </tr>
   </tbody>
 </table>
-<p>The satellite accounts associate &ldquo;satellite varibales&rdquo; to production sectors, here we will assume they represent use of $CO_2$</p>
+<p>The satellite accounts associate &ldquo;satellite variables&rdquo; to production sectors, here we will assume they represent use of $CO_2$</p>
 <table>
   <thead>
       <tr>
@@ -369,26 +394,27 @@ $$
 b = \begin{bmatrix} 0.050 &amp; 0.0125 \end{bmatrix}
 \end{aligned}
 $$
-Let $x$ denote the total output vector as:
-$$
-\begin{aligned}
-x = \begin{bmatrix} x_A \ x_B \end{bmatrix}
-\end{aligned}
-$$</p>
-<p>Let $y$ denote the final demand vector as:
-$$
-\begin{aligned}
-y = \begin{bmatrix} d_A \ d_B \end{bmatrix}
-\end{aligned}
-$$
+Let $x$ denote the total output vector and  $y$ the final demand vector:</p>
+<p>
+ $$ 
+ \begin{aligned} 
+  x = \begin{bmatrix} x_A \\ x_B \end{bmatrix} &&
+   y = \begin{bmatrix} d_A \\ d_B \end{bmatrix} 
+ \end{aligned} 
+ $$
+ </p>
 in our case:
-$$
-\begin{aligned}
-y = \begin{bmatrix} 350 \ 1700 \end{bmatrix}
-\end{aligned}
-$$</p>
+<p>
+ $$ 
+ \begin{aligned} 
+ x = \begin{bmatrix} 1000 \\ 2000 \end{bmatrix} &&
+ y = \begin{bmatrix} 350 \\ 1700 \end{bmatrix} 
+ \end{aligned} 
+ $$
+ </p>
+<p>Trivially the vector $x$ is element wise greater or equal to $y$ (because total output is final demand plus intermediary demand).</p>
 <h2 id="the-leontiev-mutliplier">The Leontiev mutliplier</h2>
-<p>We are now ready to compute a <a href="https://en.wikipedia.org/wiki/Wassily_Leontief" target="_blank" rel="external noopener noreferrer nofollow">Leontief</a> mutliplier $B$ :
+<p>We are now ready to compute a Leontief mutliplier $B$ :
 $$
 \begin{aligned}
 B = (I-A)^{-1}

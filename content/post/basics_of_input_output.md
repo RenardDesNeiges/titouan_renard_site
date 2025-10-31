@@ -1,6 +1,6 @@
 +++
 date = '2025-10-31T23:28:07+01:00'
-draft = true
+draft = false
 meta = true
 math = true
 plotly = true
@@ -8,18 +8,27 @@ author = 'Titouan Renard'
 title = 'Basics Of Input Output Analysis'
 +++
 
+The idea of this short tutorial is to give an idea of how to work with a simple 2 sector input-output table, as well as a rough idea of what the [Leontief](https://en.wikipedia.org/wiki/Wassily_Leontief) multiplier is.
 
-First given an IO table the tutorial shows how to recover the production matrix A as well as "emission coefficients" associated with satelite accounts (here for $CO_2$ emissions, hence the name).
+The core idea of IO analysis is to model the interconnectedness of economic activities. In this short tutorial we will consider an extremely simple 2 sectors model where we have two interdependent sectors
+`A` and `B` and some final demand for the output of these two sectors (they are assumed to produced a single good). Furthermore, we will assume fixed production coefficients (no substitution) which is a very common assumption in IO, and which is pretty much a correct assumption to make in the short to medium run.
 
 ## An example 2x2 IO table
 An IO matrix could look like that:
 
 |                  | Sector A | Sector B | Final Demand | Total Output |
 | ---------------- | -------- | -------- | ------------ | ------------ |
-| **Sector A**     | $i_{AA}$ | $i_{AB}$ | $d_A$        | $x_A$        |
-| **Sector B**     | $i_{BA}$ | $i_{BB}$ | $d_B$        | $x_B$        |
+| **Sector A**     | $i_{AA}$ | $i_{AB}$ | $y_A$        | $x_A$        |
+| **Sector B**     | $i_{BA}$ | $i_{BB}$ | $y_B$        | $x_B$        |
 | **Value Added**  | $v_A$    | $v_B$    | 0            | $x_{VA}$     |
 | **Total Output** | $x_A'$   | $x_B'$   |              |              |
+
+So this is a table which represents what each sector ouptuts for consumption in what other sector, as well as what each sectors needs for production. 
+
+{{< plotly json="plots/DiGraph_IO_Tutorial.json" height="500px">}}
+
+The key intution here is that the IO table is essentially (not exactly but pretty much) the adjacency matrix of a [directed graph](https://en.wikipedia.org/wiki/Directed_graph) representing the flow of goods across sectors.
+
 
 The following properties hold:
 <p>
@@ -45,7 +54,7 @@ Here is a numerical example:
 | **Value Added**  | 650      | 1400     | 0            | 2050         |
 | **Total Output** | 1000     | 2000     |              |              |
 
-The satellite accounts associate "satellite varibales" to production sectors, here we will assume they represent use of $CO_2$
+The satellite accounts associate "satellite variables" to production sectors, here we will assume they represent use of $CO_2$
 
 |         | Sector A | Sector B | Final Demand | Total |
 | ------- | -------- | -------- | ------------ | ----- |
@@ -102,28 +111,31 @@ $$
  b = \begin{bmatrix} 0.050 & 0.0125 \end{bmatrix} 
  \end{aligned} 
  $$
-Let $x$ denote the total output vector as:
- $$ 
- \begin{aligned} 
-  x = \begin{bmatrix} x_A \\ x_B \end{bmatrix}
- \end{aligned} 
- $$
+Let $x$ denote the total output vector and  $y$ the final demand vector:
 
-Let $y$ denote the final demand vector as:
-$$ 
- \begin{aligned} 
- y = \begin{bmatrix} d_A \\ d_B \end{bmatrix} 
- \end{aligned} 
- $$
- in our case:
+<p>
  $$ 
  \begin{aligned} 
+  x = \begin{bmatrix} x_A \\ x_B \end{bmatrix} &&
+   y = \begin{bmatrix} d_A \\ d_B \end{bmatrix} 
+ \end{aligned} 
+ $$
+ </p>
+in our case:
+
+<p>
+ $$ 
+ \begin{aligned} 
+ x = \begin{bmatrix} 1000 \\ 2000 \end{bmatrix} &&
  y = \begin{bmatrix} 350 \\ 1700 \end{bmatrix} 
  \end{aligned} 
  $$
+ </p>
+
+Trivially the vector $x$ is element wise greater or equal to $y$ (because total output is final demand plus intermediary demand).
 
 ## The Leontiev mutliplier
-We are now ready to compute a [Leontief](https://en.wikipedia.org/wiki/Wassily_Leontief) mutliplier $B$ :
+We are now ready to compute a Leontief mutliplier $B$ :
 $$ 
  \begin{aligned} 
  B = (I-A)^{-1}

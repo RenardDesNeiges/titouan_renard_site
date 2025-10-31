@@ -1,5 +1,5 @@
 +++
-date = '2025-10-31T13:13:27+01:00'
+date = '2025-10-10T13:13:27+01:00'
 draft = false
 meta = true
 math = true
