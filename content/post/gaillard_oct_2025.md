@@ -3,9 +3,14 @@ date = '2025-10-31T13:13:27+01:00'
 draft = false
 meta = true
 math = true
+plotly = true
 author = 'Titouan Renard'
 title = 'The Swiss Debt Brake: Making Sense of an Apparent Paradox'
 +++
+
+<!-- {{</* plotly json="/plots/Gaillard_Debt_To_GDP_creditors.json" height="500px" */>}} -->
+{{< plotly json=plots/Gaillard_Debt_To_GDP_creditors.json height="400px">}}
+
 
 
 <!-- <img src="media/image1.png" style="width:6.29444in;height:3.67153in" /> -->
@@ -35,8 +40,11 @@ $$
 
 The aforementioned assumptions (exogenous money supply, the quantity theory of money) imply that the main limitation of fiscal space is the accumulation of debt. Passed a certain level of debt, most of the government’s budget would go to paying interests, and the government would have to refinance its debt either by further borrowing, possibly at an increasing cost or by creating new monetary base, at the risk of creating inflation. In the *sound finance* paradigm, both of these possibilities are what concretely limit fiscal space {{< marginnote >}}For an example of this view in practice, take a look at: Ghosh, Atish R., Jun I. Kim, Enrique G. Mendoza, Jonathan D. Ostry, and Mahvash S. Qureshi. ‘Fiscal Fatigue, Fiscal Space and Debt Sustainability in Advanced Economies’. *The Economic Journal* 123, no. 566 (2013): F4–30.{{< /marginnote >}}. The idea of the debt brake is thus to constrain the augmentation of the debt in “normal” times to preserve the government’s ability to contract more debt in the future, ensuring there is plenty of available *fiscal space* to be used in times of crisis. This is why it is argued that the debt brake acts as an automatic stabiliser{{< marginnote >}}Pfeil, Christian F., and Lars P. Feld. ‘Does the Swiss Debt Brake Induce Sound Federal Finances? A Synthetic Control Analysis’. *Public Finance Review* 52, no. 1 (January 2024): 3–41. <https://doi.org/10.1177/10911421231191566>.{{< /marginnote >}}.
 
+
+<!-- {{</* plotly json="/plots/Gaillard_Debt_To_GDP_creditors.json" height="400px" */>}} -->
+
 The effect of the debt brake is clearly visible when comparing the Swiss
-debt level to that of its European neighbours (Figure 3. (a)). Here, it
+debt level to that of its European neighbours. Here, it
 is worth noting that with a public debt to GDP ratio of 14% (in 2022),
 the confederation has a debt much lower than its European neighbours
 (the same year, the French debt to GDP ratio was 92%, Germany’s 45% and
