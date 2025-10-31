@@ -1,0 +1,7 @@
+[[menu.main]]
+    identifier = "github"
+    name = "GitHub"
+    url = "https://github.com/"
+    pre = "github"
+[[menu.main.params]]
+    target = "_blank"

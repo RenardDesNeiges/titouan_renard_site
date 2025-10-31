@@ -15,6 +15,33 @@ enableRobotsTXT = true
 ## Files to ignore when building site
 ignoreFiles = [ '\.redacted', '\.old','\.bak', '\.tmp', '\.swp', '\.DS_Store']
 
+[[menu.main]]
+    identifier = "github"
+    name = "GitHub"
+    url = "https://github.com/renarddesneiges/"
+    pre = "github"
+    
+[[menu.main.params]]
+    target = "_blank"
+
+
+[[menu.main]]
+    identifier = "about"
+    name = "About (CV)"
+    pageRef = "about"
+
+[[menu.main]]
+    identifier = "publications"
+    name = "Publications"
+    pageRef = "publications"
+
+
+    # [[menu.main]]
+    #     identifier = "about-author"
+    #     name = "Author"
+    #     pageRef = "/about/author"
+    #     parent = "about"
+
 ## markup configuration
 [markup]
     [markup.highlight]
@@ -131,9 +158,9 @@ ignoreFiles = [ '\.redacted', '\.old','\.bak', '\.tmp', '\.swp', '\.DS_Store']
     ## Logo configuration
     [params.logo]
         ## Light mode logo mark
-        logoMark = 'https://example.com/logoMark.svg'
-        ## Dark mode logo mark
-        logoMarkDark = 'https://example.com/logoMarkDark.svg'
+        # logoMark = 'https://example.com/logoMark.svg'
+        # ## Dark mode logo mark
+        # logoMarkDark = 'https://example.com/logoMarkDark.svg'
         ## Enable logo type
         logoType = true
 

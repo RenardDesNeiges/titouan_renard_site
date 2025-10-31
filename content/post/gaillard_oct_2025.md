@@ -3,6 +3,7 @@ date = '2025-10-31T13:13:27+01:00'
 draft = false
 meta = true
 math = true
+author = 'Titouan Renard'
 title = 'The Swiss Debt Brake: Making Sense of an Apparent Paradox'
 +++
 
@@ -13,7 +14,6 @@ title = 'The Swiss Debt Brake: Making Sense of an Apparent Paradox'
 recommended by Gaillard et al. (2024). -->
 
 The contents of the report “*re-examining the tasks and subsidies*” of the Swiss Confederation lay down a roadmap for what almost looks like an austerity program {{< marginnote >}}Gaillard, Serge, Jacques Bourgeois, Aymo Brunetti, Christoph Schaltegger, and Ursula Schneider Schüttel. « Réexamen 2024 des tâches et des subventions - Rapport à l’attention du Conseil fédéral », 25 août 2024.{{< /marginnote >}}. The proposition to cut down the total spending of the state by 4.9 CHF billion / year by 2030, which has led to mobilisation, especially the education sector, implies drastic reductions of spending in key areas of the confederation’s public policy, including but not limited to: climate and energy, research and integration of asylum.
-
 
 Astonishingly, out of 66 pages, the report dedicates a mere 6 to justifying why public spending should be cut. In short, the motivation for the limitation of public spending boils down to the application of the constitutionally enforced debt brake, a legislative device explicitly aimed at preventing the confederation from accumulating debt. In view of the authors of the report, the argumentation for slashing public spending thus goes as follows. Noting that the COVID-19 pandemic and the economic consequences of the Ukraine war have caused an increase in the Confederation’s spending relative to its income, the authors conclude that “*if no corrective action is taken, this increase will lead to major structural deficits in the years to come*” {{< marginnote >}}*Ibid.*a p.3 (Unless mentioned otherwise, all translations into English are by the author.){{< /marginnote >}}. Since the prevailing wisdom states that any increase in taxation level should be avoided{{< marginnote >}} It is worth mentioning that a small section of the report is
 dedicated to the evaluation of an alternative scenario where fiscal
