@@ -35,13 +35,6 @@ ignoreFiles = [ '\.redacted', '\.old','\.bak', '\.tmp', '\.swp', '\.DS_Store']
     name = "Publications"
     pageRef = "publications"
 
-
-    # [[menu.main]]
-    #     identifier = "about-author"
-    #     name = "Author"
-    #     pageRef = "/about/author"
-    #     parent = "about"
-
 ## markup configuration
 [markup]
     [markup.highlight]
