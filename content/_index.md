@@ -7,4 +7,6 @@ I am Titouan Renard a political economy student at UNIGE with a background in ro
 
 This is my website, it contains a few blog posts as well as a list of my publications and my CV.
 
-To contact me, write me a mail at titouan.renard <at> etu.unige.ch.
+To contact me, write me a mail at:
+
+titouan.renard|at|etu.unige.ch.
