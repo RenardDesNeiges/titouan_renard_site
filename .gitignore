@@ -1,5 +1,5 @@
 .DS_Store
 .hugo_build.lock
 hugo.toml
-public/*
+# public/*
 resources/_gen/*
