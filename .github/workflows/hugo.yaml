@@ -26,7 +26,8 @@ jobs:
     steps:
       # First, remove the problematic config if it exists
       - name: Remove unsupported git config
-        run: git config --local --unset-all extensions.worktreeConfig || echo "Config didn't exist, continuing"
+        run: |
+          git config --local --unset-all extensions.worktreeConfig || echo "Config didn't exist, continuing"
       - name: Checkout
         uses: actions/checkout@v5
         with:
