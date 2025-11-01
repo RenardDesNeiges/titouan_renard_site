@@ -14,7 +14,7 @@ keepAspectRatio: true
 ![](https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/22.svg)
 
 ### Education
-- {{< marginpar >}}2025{{< /marginpar >}}**Master in Economy** (Erasmus semester), Barcelona, Spain, [Universitat de Barcelona](https://www.ub.edu/school-economics/master-in-economics/)
+- {{< marginpar >}}2025{{< /marginpar >}}**Master in Economics** (Erasmus semester), Barcelona, Spain, [Universitat de Barcelona](https://www.ub.edu/school-economics/master-in-economics/)
 - {{< marginpar >}}2024-Present{{< /marginpar >}}**Master in Political Economy of Capitalism**, Geneva, Switzerland, [UNIGE](https://www.unige.ch/sciences-societe/formations/masters-in-english/political-economy-of-capitalism)
 - {{< marginpar >}}2023{{< /marginpar >}}**Master in Robotics with a Minor in Data Science**, Lausanne, Switzerland, [EPFL](https://www.epfl.ch/education/master/programs/robotics/)
 - {{< marginpar >}}2020{{< /marginpar >}}**Bachelor in Microengineering**, Lausanne, Switzerland, [EPFL](https://www.epfl.ch/education/bachelor/fr/programmes/microtechnique/)
