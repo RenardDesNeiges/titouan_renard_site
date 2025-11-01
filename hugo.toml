@@ -108,10 +108,10 @@ ignoreFiles = [ '\.redacted', '\.old','\.bak', '\.tmp', '\.swp', '\.DS_Store']
         name = 'Titouan Renard'
         ## Author's email
         email = 'titouan.renard@unige.etu.ch'
-        ## Other method to customize author and co-authors information
-        coauthor = [
-            {name = "A.N. Other", bio = "Lorem ipsum dolor sit amet."}
-        ]
+        # ## Other method to customize author and co-authors information
+        # coauthor = [
+        #     {name = "A.N. Other", bio = "Lorem ipsum dolor sit amet."}
+        # ]
 
     ## Comments configuration
     [params.comments]
@@ -122,11 +122,11 @@ ignoreFiles = [ '\.redacted', '\.old','\.bak', '\.tmp', '\.swp', '\.DS_Store']
 
     ## Favicon configuration
     [params.favicon]
-        png = '/favicon-96x96.png'
-        svg = '/favicon.svg'
-        ico = '/favicon.ico'
-        apple = '/apple-touch-icon.png'
-        appTitle = 'App Title'
+        png = 'images/favicon-96x96.png'
+        svg = 'images/favicon.svg'
+        ico = 'images/favicon.ico'
+        apple = 'images/apple-touch-icon.png'
+        appTitle = 'Titouan Renard'
         webmanifest = '/site.webmanifest'
 
 
