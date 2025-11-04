@@ -5,12 +5,6 @@ keepAspectRatio: true
 
 
 
-<!-- Below is a full-width figure. -->
-<!-- {{< figure
-  src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/22.svg"
-  type="full"
- >}}
-{{< section "end" >}} -->
 ![](https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/22.svg)
 
 ### Education
