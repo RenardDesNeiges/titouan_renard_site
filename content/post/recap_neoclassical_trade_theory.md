@@ -1,0 +1,344 @@
++++
+date = '2025-11-01T15:16:31+01:00'
+draft = true
+meta = true
+math = true
+plotly = true
+title = 'A Critical Engagement with Neoclassical (Comparative Advantage) Trade Theory'
++++
+
+The following note is part of my Master Thesis's literature review. It provides a summary of key models in neoclassical trade theory and discusses the various issues which arise when trying to explain international profit flows from this framework. Here is a summary table of the models covered in this note:
+
+|                                    | Ricardian                                                                                                   | Hecksher-Ohlin                                                                                            | Mundell                                                                                                   | Obstfeld and Rogoff                                        |
+| ---------------------------------- | ----------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| What drives trade? | Difference in production technology                                                                         | Capital and Labour Endowments                                                                             | Capital and Labour Endowments                                                                             |                                                            |
+| Prediction                         | Free trade leads to each country specializing in the good they have technological comparative advantage for | Free trade leads to each country specializing in the good they have relatively more factors of production | Free trade leads to each country specializing in the good they have relatively more factors of production |                                                            |
+| What explains capital mobility     | No capital mobility                                                                                         | No capital mobility                                                                                       | Capital mobility is explained by restrictions on trade (for instance tariffs)                             | Capital mobility is explained by intertemporal constraints |
+
+
+## "Pure" comparative advantage models
+In the following section I discuss the two quintessential "pure"{{< marginnote >}}By "pure" I mean that these are models that do not include international capital flows, a role for financial markets or the inclusion of intertemporal constraints.{{< /marginnote >}} comparative advantage models. They are:
+- the **Ricardian model**, which focuses on the idea that technological progress is what fundamentally defines trade, in the view of the Ricardian model it is technology which defines comparative advantages
+- the **Hecksher-Ohlin** which focuses on capital/labour endowments, here technology is equal but it is relative scarcity of capital an labour which defines comparative advantage
+
+In both case the key idea is that of comparative advantage, i.e. an international version of the idea of the benefits from specialization. 
+
+### The Ricardian Comparative Advantage Model 
+
+Famously it is the work of David Ricardo which laid down the basic building blocs of modern international trade theory. Building on Smith's insight but criticizing the Smithian idea of *absolute advantages*  Ricardo's main theoretical innovation was showing that, under the right assumption, countries could still benefit from trade even when *absolutely* disadvantaged.
+
+Below, we write down a mathematical formalization of the so-called ricardian model. 
+
+#### The mathematical specification
+{{< marginpar >}}The formalism adopted below matches the approach of Paul R. Krugman et al., ‘Chapter 3: Labor Productivity and Comparative Advantage: The Ricardian Model’, in International Economics: Theory & Policy, 9. ed., global ed, The Pearson Series in Economics (Pearson, 2012).{{< /marginpar >}}
+Countries have endowments given by the technology coefficients and by a quantity of expandable labour. The technology coefficient $a_X^H$​ gives the labour required to produce one unit of good X in Country H (e.g., hours/unit). The coefficients $a_Y^H,A_X^F,A_Y^H$​ do the same for all other good-country combination. The labour endowments are written $L_H$ and $L_F$.
+
+
+Further more, each country $i$ is assumed to have a consumption utility function $U^i(Q_X^i,Q_Y^i)$ which is most often defined as a Cobb-Douglas production function:
+
+<p>
+$$ 
+ \begin{aligned} 
+U^i(Q_X^i,Q_Y^i) = (Q_X^i)^{\beta^i}\cdot (Q_Y^i)^{1-\beta^i}
+ \end{aligned} 
+ $$
+</p>
+
+This function which will be used to derive the country's welfare (and later to show the welfare gains from free trade). 
+
+#### Autarky solution
+Let us see what happens in the absence of trade.  Consumption is equal to production:
+
+<p>
+$$ 
+ \begin{aligned} 
+ Q_X^H = C_X^H &&  Q_X^F = C_X^F
+ \end{aligned} 
+ $$
+</p>
+
+The autarky solution (here for the home coutry, but this is general) is given simply by the consumption problem:
+
+<p>
+$$ 
+ \begin{aligned} 
+ \max_{Q_X^H,Q_X^H} && U^H(Q_X^H,Q_Y^H) \\
+ \text{s.t.} && a_X^H Q_X^H + a_Y^H Q_Y^H \leq L^H && (P.1)\\
+			&& Q_X^H,Q_Y^H \geq 0
+ \end{aligned} 
+$$
+</p>
+
+Which solves for in close form relatively easily. Because the function is strictly increasing and and strictly convex we know it has a unique solution on the budget line: $a_X^H Q_X^H + a_Y^H Q_Y^H = L^H$, which means we can just substitute the budget line equation into $U$ differentiate and select the point where the derivative is null. This gives the autarky equilibrium as:
+
+<p>
+$$ 
+ \begin{aligned} 
+ Q^{H*}_X = \frac{ \beta^H L^H }{ a_X^H } && 
+ Q^{H*}_Y = \frac{ (1-\beta^H) L^H }{ a_Y^H }
+ \end{aligned} 
+ $$
+</p>
+
+
+This gives what is refered to as the "*Autarky Solution*" i.e. the solution assuming no international flow of trade. It is also just a very simple neoclassical model of consumption.
+{{< plotly json="plots/ConsumptionProblem.json" height="700px">}}
+
+#### Free Trade
+Here we introduce the distinction between consumption an production, a country may now produce $X$ and trade it with $Y$ in order to consume a mix of $X$ and $Y$. We consider a world market were goods are traded at prices which are independant of location. 
+#### Production
+When considering the free trade situation we can't reduce the problem to consumption. So we will define a production problem for each country:
+
+<p>
+$$ 
+ \begin{aligned} 
+ \max_{Q_X^i,Q_Y^i} && p_X Q_X^i + p_Y Q_Y^i\\
+		\text{s.t.} && a_X^i Q_X^i + a_Y^i Q_Y^i \leq L^i && (P.2) \\
+					&& Q_X^i, Q_Y^i \geq 0
+ \end{aligned} 
+ $$
+</p>
+
+ which simply says that producers in country $i$ attempt to maximize the value of their output (in price). Note that the price components are not a function of the country. We assume perfect market so these are world-prices. The linear program defined solves to one of its vertices (as linear programs do) and hence should lead to complete specialization for any given price.
+
+#### Consumption
+Similarly to what we did previously we write a consumption problem, but now utility is maximized by purchasing goods on the world market instead of directly. 
+
+<p>
+$$ 
+ \begin{aligned} 
+   \begin{aligned} 
+ \max_{Q_X^i,Q_X^i} && U^H(C_X^i,C_Y^i) \\
+ \text{s.t.} && p_X^i C_X^i + a_Y^i C_Y^i \leq I^i && (P.3)\\
+		 && \text{where } I^H = p_X Q_X^H +  p_Y Q_Y^H \\
+		&& C_X^i,C_Y^i \geq 0
+ \end{aligned} 
+ \end{aligned} 
+ $$
+</p>
+
+#### World General Equilibrium
+In order to link the four optimization problems (P.2) and (P.3) for both home and foreign countries we need to introduce a condition that ensure that the world market for each good clears. This is done by introducing market clearing conditions:
+
+<p>
+$$ 
+ \begin{aligned} 
+ C_X^H + C_X^F &= Q_X^H + Q_X^F \\
+ C_Y^H + C_Y^F &= Q_Y^H + Q_Y^F \\
+ \end{aligned} 
+ $$
+</p>
+
+Which has a trivial interpretation: *everything sold is bought*. Computing a corresponding joint optimization problem is surprisingly complex (but can be done both analytically and numericall). 
+
+Below is a visualization of the solution of the Ricardian two sectors, two countries models. The welfares (i.e. the scalar values of the utilities at equilibrium), the productions (how much does each country produces) and the equilibrium values of the model are show both in the autarchy solution and in the world-general equilibrium. What is key is that comparative advantage allows both countries to **consume beyond their own production frontier** (because they benefit from the comparative advantage).
+{{< plotly json="plots/RicardianComparativeAdvModel.json" height="700px">}}
+
+Essentially what is happening boils down to the following principle "*countries sell what will earn them more money and then are be able to "buy more utility" from the world market than what they could have produced themselves*". Although the example above is not very rigorous (getting to a formal proof is a bit of a more involved endeavour) it illustrates well the predictions of the model. They are actually extremely simple: any difference in technological coefficients will produce a welfare improvement. The only case where trade is not beneficial is for countries with identical endowments (where no comparative advantage exists).
+
+
+### The Hecksher-Ohlin model
+The model is often presented as the successor to the Ricardian to an economy with more than one factor of production. 
+
+As in our Ricardian example we will look at two countries (A and B) with two goods (X and Y), but this time we will look at two factors of production (capital K and labour L) as well. Unlike in the Ricardian model in the HO model, we will assume identical technologies, as well as constant returns to scale (CRS). What will differ across countries this time is factor endowments: i.e. abundance of capital and labour. W.l.o.g, we assume Country A is capital-abundant relative to Country B. We will also assume that the goods are differentiated by their factor intensities, again, w.l.o.g we assume that good X is more capital intensive than good Y, that is:
+
+<p>
+$$ 
+ \begin{aligned} 
+ \frac{ K_X }{ L_X}  < 
+ \frac{ K_Y }{ L_Y} 
+ \end{aligned} 
+ $$
+</p>
+
+We will assume perfect (international and national) competition.
+
+
+#### Production
+Now we will assume a constant return to scale production function for each good (independantly of the country, since we assume identical technology). Here there are two main possibilities: a Leontief production function or another Cobb Douglas production function, for keeping with the neoclassical flavour of this whole discussion we will work with a Cobb-Douglass function as well. So for country $i$ we get the following productions:
+
+<p>
+$$ 
+ \begin{aligned} 
+ Q_X^i &=F_X(L^i_X,K^i_X) = A_X {L^i_X}^{\alpha_X} {K^i_X}^{1-\alpha_X}\\
+ Q_Y^i &=F_Y(L^i_Y,K^i_Y) =  A_Y {L^i_Y}^{\alpha_Y} {K^i_Y}^{1-\alpha_Y}
+ \end{aligned} 
+ $$
+</p>
+
+ where $A^i$ is the total factor productivity and $\alpha$ is the output elasticity of labour. 
+
+We assume that companies perform unit-cost-minimization and solve, for each country $i$ and for each good $j$:
+
+<p>
+$$ 
+ \begin{aligned} 
+  \min_{L_j^i,K_j^i} &&wL_i + r K_i \\
+  \text{s.t.} && F_j(L_j^i,K_j^i)=1 && (P.1)
+ \end{aligned} 
+ $$
+</p>
+
+ where $r$ and $w$ are the costs of capital and labour respectively. Of course this solution works only because of the constant returns to scale (CRS) assumption (otherwise there would be a specific problem for each output volume). The solution to this problem gives the **unit input requirements** which depend on factor prices, under Cobb douglass specification they are:
+
+<p>
+ $$ 
+ \begin{aligned} 
+\text{for labour: } a_{L_i}(w,r) &=
+\bigg(\frac{ 1 }{ A_i }\bigg)
+ \bigg(\frac{ \alpha_i r }{ (1- \alpha_i)w }\bigg)^{1- \alpha_i}
+\\ \text{for capital: } a_{K_i}(w,r) &=
+\bigg(\frac{ 1 }{ A_i }\bigg)
+ \bigg(\frac{ (1- \alpha_i)w }{  \alpha_i r  }\bigg)^{\alpha_i}
+ \end{aligned} 
+ $$
+</p>
+
+ 
+Then comes the (as usual a bit hard to swallow for a heterodox) **zero (economic) profits condition**. The unit cost of each good equals its unit cost of production. This will give us the price of goods, for each good $j$ :
+
+<p>
+$$ 
+ \begin{aligned} 
+  p_j = c_j(w,r) = w  a_{L_j}(w,r) + r  a_{K_j}(w,r)
+ \end{aligned} 
+ $$
+</p>
+
+We assume that there are fixed per-country endowments of labour and capital, which means we can impose a factor market clearing condition, fo each country $i$:
+
+<p>
+$$ 
+ \begin{aligned} 
+ a_{L_X}^i (w^i,r^i) \cdot Q_X^i +  a_{L_Y}^i (w^i,r^i) \cdot Q_Y^i = L^i\\
+ a_{K_X}^i (w^i,r^i) \cdot Q_X^i +  a_{K_Y}^i (w^i,r^i) \cdot Q_Y^i = K^i\\
+ \end{aligned} 
+ $$
+</p>
+
+#### Consumption
+Each country has a representative consumer, which owns all production factors and which maximizes their utility function. As in the Ricardian model, each country $i$ is assumed to have the same consumption utility function $U(C_X^i,C_Y^i)$ which is most often defined as a Cobb-Douglas function:
+
+<p>
+$$ 
+ \begin{aligned} 
+U(C_X^i,C_Y^i) = (C_X^i)^{\beta}\cdot (C_Y^i)^{1-\beta}
+ \end{aligned} 
+ $$
+</p>
+
+There is a budget constraint given by:
+
+<p>
+$$ 
+ \begin{aligned} 
+\text{Country Budget:}
+&&\overbrace{p_X C_X + p_Y C_Y}^{\text{Consumption}} = I = \overbrace{wL^i + rK^i }^{\text{Factor income}}
+ \end{aligned} 
+ $$
+</p>
+
+ This gives rise to a a utility maximization problem:
+
+<p>
+ $$ 
+ \begin{aligned} 
+ \max_{C_X^i,C_Y^i} &&  U^i(C_X^i,C_Y^i)\\
+ \text{s.t.} && p_X C_X + p_Y C_Y \leq wL + rK && (P.2)
+ \end{aligned} 
+ $$
+</p>
+
+Solving the consumption problem gives marshallian demand functions, under our Cobb-Douglas specification we have:
+
+<p>
+$$ 
+ \begin{aligned} 
+ C_X(p_X,p_Y,I) = \beta \frac{ I }{ p_X } && C_Y(p_X,p_Y,I) (1-\beta) \frac{ I }{ p_Y } 
+ \end{aligned} 
+ $$
+</p>
+
+
+#### Autarky solution
+In the autarky case, equilibrium must satisfy:
+1. Good markets clearing: $C_X=Q_X$ and $C_Y​=Q_Y$
+2. Factor markets clearing:  $a_{L_X} (w,r) \cdot Q_X +  a_{L_Y} (w,r) \cdot Q_Y = L$
+3. Zero profits:   $p_X = c_X(w,r) = w  a_{L_X}(w,r) + r  a_{K_X}(w,r)$ (and same for the price of Y)
+4. Consumers maximize utility and firms minimize costs (P.1) and (P.2)
+
+#### Free Trade
+Under the assumptions of identical technologies and free trade, the model predicts **Factor Price Equalization**. We can think of the trading equilibrium as the solution to a single integrated world economy problem.
+- World endowments: $L_W=L_A+L_B$ and $K_W=K_A+K_B$
+- World Production Optimization:  the world, as a whole, solves the problem of maximizing the value of world output (it is a world-planner problem).
+
+The optimization problem is the following:
+
+<p>
+$$ 
+ \begin{aligned} 
+ \max_{
+ C_X^W, C_X^W, L_X^W, L_X^W, K_X^W, K_X^W 
+ } &&
+ \Big(C_X^W\Big)^{\beta}\cdot \Big(C_Y^W \Big)^{1-\beta}\\
+ \text{subject to:} \\&& \text{(1) World production feasibility:}\\
+ && 
+ Q_X^W \leq A_X {L^i_X}^{\alpha_X} {K^i_X}^{1-\alpha_X}\\
+&& Q_Y^W \leq A_Y {L^i_Y}^{\alpha_Y} {K^i_Y}^{1-\alpha_Y}\\
+  && \text{(2) World ressource constraints:}\\
+ && L_1^W + L_w^W \leq L_A + L_B \\
+  && K_1^W + K_w^W \leq K_A + K_B \\
+   && \text{(3) Non-negativity:}\\
+   && C_X^W, C_X^W, L_X^W, L_X^W, K_X^W, K_X^W \geq 0 
+ \end{aligned} 
+ $$
+
+</p>
+
+Here are the **free trade equilibrium conditions**:  
+A free trade equilibrium is a set of world prices $(p_X,p_Y)$, country-specific outputs$(Q_X^A,Q_Y^A,Q_X^B,Q_Y^B)$, consumptions $(C_X^A,C_Y^A,C_X^B,C_Y^B)$, and factor prices$ (w^A,r^A,w^B,r^B)$ such that:
+1. **Common Goods Prices**: Both countries face the same prices for all good
+2. **Factor Price Equalization** $w^A=w^B=w^W$ and $r^A=r^B=r^W$ all factor prices converge to a world factor price
+3. **Country-Level Profit Maximization and Factor Market Clearing** (from Section 1) hold for each country separately, given world prices and equalized factor prices.
+4. **World Goods Markets Clear**:  
+      $C_X^A+C_X^B=Q_X^A+Q_X^B$
+      $C_Y^A+C_Y^B=Q_Y^A+Q_Y^B$
+5. **Balance of Payments**: For each country, the value of its consumption equals the value of its production (no unbalanced trade).
+
+#### The Heckscher-Ohlin Theorem
+
+The pattern of trade is determined by the interaction of differences in factor endowments and factor intensities.
+Given our assumptions:
+- Country A is **capital-abundant**
+- Good $Y$ is **capital-intensive** 
+
+The model's solution to the optimization problems implies that in the free trade equilibrium:
+- Country A will have a **comparative advantage** in the good that uses its abundant factor intensively: Good Y
+- Country B will have a **comparative advantage** in Good X
+
+Therefore, the trade pattern will be:
+- Country A **exports** Good 2 and **imports** Good 1.
+- Country B **exports** Good 1 and **imports** Good 2.
+
+### Issues with "pure" comparative advantage models
+**Capital mobility in "pure" comparative advantage models.** As was already remarked by Ricardo himself, these models predict that there are gains from trade because of the relative immobility of factors (or technological advancement) in space. This means that in a world were capital moves around their conclusions do not hold anymore. To quote Ricardo: in a world were capital is mobile, it would “*freely flow toward those countries where it could be most profitably employed, [so that] there could be no difference in the rate of profit, and no other difference in the real or labor price of commodities than the additional quantity of labor required to convey them to ( ... ) where they were to be sold*"{{< marginnote >}}Quoted by Patrick Kaczmarczyk, ‘Foreign Direct Investment in Neoclassical Theory of International Trade: A Conceptual Weak Spot’, International Journal of Political Economy 52, no. 1 (2023): 70–87, [https://doi.org/10.1080/08911916.2023.2186054](https://doi.org/10.1080/08911916.2023.2186054). from page 84 of Ricardo, David. 2016. The Principles of Political Economy and Taxation. Eastford, Connecticut: Martino Fine Books.{{< /marginnote >}}. In other words, in the view of Ricardo, **under the assumption of perfectly mobile endowments, comparative advantages would disappear as capital flowed towards the highest profits**. Similarly the Hecksher-Ohlin model does not predict any form of capital mobility (rather it assumes complete of endowments).
+
+Why is this the case? Because the comparative advantage models are built in such a way that "*if the world were as depicted in neoclassical trade models, FDI and TNCs would be non-existent. Since the market constitutes the most efficient means of exchange, resources and goods are allocated, produced, and exchanged through free trade—while corporations operating across borders and FDI would be redundant.*"{{< marginnote >}}p.74 in Patrick Kaczmarczyk (2023) ‘Foreign Direct Investment in Neoclassical Theory of International Trade: A Conceptual Weak Spot’{{< /marginnote >}}. So international capital flows (and the corresponding international profit flows) do not make any sense if we view the world through the lens of these models.
+
+**The balance of payment constraint.** All of these models assume some kind of balance of payment constraint. That is, countries import exactly as much as they export (in monetary terms). These economic constraints are imposed as mathematical constraints in the formulation of the optimization problems corresponding to both the Ricardian and the Hecksher-Ohlin model. This assumption actually goes beyond "pure" comparative advantage models, it is a central assumption to modern trade theory. And it is perhaps best exemplified by the Krugman quote:
+
+{{< epigraph pre="Krugman 1991, " cite="Krugman, P. (1991). “Myths and Realities of U.S. Competitiveness.” Science 254(5033): 811–15" post=", cited in Milberg and Winkler 2013"  >}}
+*There are strong equilibrating forces that normally ensure that any country remains able to sell a range of goods in world markets, and to balance its trade on average over the long run, even if its productivity, technology, and product quality are inferior to those of other nations . . . Both in theory and in practice, countries with lagging productivity are still able to balance their international trade, because what drives trade is comparative rather than absolute advantage*
+{{< /epigraph >}}
+
+But here we face an issue: real world trade is very far from being balanced. There are deep persistant trade imbalances (for instance in the case of the US, trade has not been balanced since the 1980s). Milberg and Winkler argue that this assumption (that trade will balance out over the medium to long run) can be understood as "*a trade version of Say's law*"{{< marginnote >}}William S. Milberg and Deborah Winkler, Outsourcing Economics: Global Value Chains in Capitalist Development (Cambridge University Press, 2013).{{< /marginnote >}}. This is consistent with an exogenous money supply assumption, as they are rather commonly made by neoclassical economists.
+
+## Models with capital flows
+There are two main approaches to updating comparative advantage models to allow for capital mobility:
+- Mundell’s model, where capital movements are induced by impediments in trade (for instance tariffs)
+- Obstfeld and Rogoff's model, which argue that capital flows arise from intertemporal constraints, as a way of "smoothing consumption" over time
+We will now take a look at both of these models.
+
+<!-- In Mundell’s model, capital movements are induced by impediments in trade (e.g. via tariffs) and differences in the marginal product of capital. As capital moves across the border, the capital abundance in each country changes, which consequentially affects the marginal product of capital and labor. This process continues until the marginal product of each factor is identical across countries and the new equilibrium is reached. Mundell -->
+
+<!-- Obstfeld and Rogoff (1996), amongst others, equally suffer from the same shortcomings: capital movements are bound to lead to production abroad in which input factors are selected based on the relative prices of labor and capital. The reasons of these flows may differ—as particularly Obstfeld and Rogoff’s -->
