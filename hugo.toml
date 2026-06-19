@@ -50,12 +50,12 @@ ignoreFiles = [ '\.redacted', '\.old','\.bak', '\.tmp', '\.swp', '\.DS_Store']
   [markup.goldmark]
     [markup.goldmark.renderer]
         unsafe = true
-    # [markup.goldmark.extensions]
-    #   [markup.goldmark.extensions.passthrough]
-    #     enable = true
-    #     [markup.goldmark.extensions.passthrough.delimiters]
-    #       block = [['\[', '\]'], ['$$', '$$']]
-    #       inline = [['\(', '\)']]
+     [markup.goldmark.extensions]
+       [markup.goldmark.extensions.passthrough]
+         enable = true
+         [markup.goldmark.extensions.passthrough.delimiters]
+           block = [['\[', '\]'], ['$$', '$$']]
+           inline = [['\(', '\)']]
 ## Sitemap configuration
 [sitemap]
     ## Change frequency setting (will affect posts listings layout): 'always', 'hourly', 'daily', 'weekly', 'monthly', 'yearly', 'never'
@@ -95,7 +95,7 @@ ignoreFiles = [ '\.redacted', '\.old','\.bak', '\.tmp', '\.swp', '\.DS_Store']
     DisableFootBar = true
     ## Merge site license, footer menu and coffee stat
     unifiedFooter = true
-    math = true
+
     
     ## At the moment, analytics can be added manually by creating a custom template at `mysite/layouts/partials/analytics.html`
     [params.analytics]

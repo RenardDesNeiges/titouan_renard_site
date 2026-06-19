@@ -3,12 +3,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://titouanrenard.eu/</loc>
-    <lastmod>2025-11-01T15:16:31+01:00</lastmod>
+    <lastmod>2026-01-01T15:16:31+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    </url>
+  <url>
+    <loc>https://titouanrenard.eu/post/recap_neoclassical_trade_theory/</loc>
+    <lastmod>2026-01-01T15:16:31+01:00</lastmod>
     <changefreq>monthly</changefreq>
     </url>
   <url>
     <loc>https://titouanrenard.eu/post/</loc>
-    <lastmod>2025-11-01T15:16:31+01:00</lastmod>
+    <lastmod>2026-01-01T15:16:31+01:00</lastmod>
     <changefreq>monthly</changefreq>
     </url>
   <url>

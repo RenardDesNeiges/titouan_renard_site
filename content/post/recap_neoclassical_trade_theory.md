@@ -1,6 +1,6 @@
 +++
-date = '2025-11-01T15:16:31+01:00'
-draft = true
+date = '2026-01-01T15:16:31+01:00'
+draft = false
 meta = true
 math = true
 plotly = true
@@ -36,30 +36,30 @@ Countries have endowments given by the technology coefficients and by a quantity
 
 Further more, each country $i$ is assumed to have a consumption utility function $U^i(Q_X^i,Q_Y^i)$ which is most often defined as a Cobb-Douglas production function:
 
-<p>
+
 $$ 
  \begin{aligned} 
 U^i(Q_X^i,Q_Y^i) = (Q_X^i)^{\beta^i}\cdot (Q_Y^i)^{1-\beta^i}
  \end{aligned} 
  $$
-</p>
+
 
 This function which will be used to derive the country's welfare (and later to show the welfare gains from free trade). 
 
 #### Autarky solution
 Let us see what happens in the absence of trade.  Consumption is equal to production:
 
-<p>
+
 $$ 
  \begin{aligned} 
  Q_X^H = C_X^H &&  Q_X^F = C_X^F
  \end{aligned} 
  $$
-</p>
+
 
 The autarky solution (here for the home coutry, but this is general) is given simply by the consumption problem:
 
-<p>
+
 $$ 
  \begin{aligned} 
  \max_{Q_X^H,Q_X^H} && U^H(Q_X^H,Q_Y^H) \\
@@ -67,18 +67,18 @@ $$
 			&& Q_X^H,Q_Y^H \geq 0
  \end{aligned} 
 $$
-</p>
+
 
 Which solves for in close form relatively easily. Because the function is strictly increasing and and strictly convex we know it has a unique solution on the budget line: $a_X^H Q_X^H + a_Y^H Q_Y^H = L^H$, which means we can just substitute the budget line equation into $U$ differentiate and select the point where the derivative is null. This gives the autarky equilibrium as:
 
-<p>
+
 $$ 
  \begin{aligned} 
  Q^{H*}_X = \frac{ \beta^H L^H }{ a_X^H } && 
  Q^{H*}_Y = \frac{ (1-\beta^H) L^H }{ a_Y^H }
  \end{aligned} 
  $$
-</p>
+
 
 
 This gives what is refered to as the "*Autarky Solution*" i.e. the solution assuming no international flow of trade. It is also just a very simple neoclassical model of consumption.
@@ -89,7 +89,7 @@ Here we introduce the distinction between consumption an production, a country m
 #### Production
 When considering the free trade situation we can't reduce the problem to consumption. So we will define a production problem for each country:
 
-<p>
+
 $$ 
  \begin{aligned} 
  \max_{Q_X^i,Q_Y^i} && p_X Q_X^i + p_Y Q_Y^i\\
@@ -97,14 +97,14 @@ $$
 					&& Q_X^i, Q_Y^i \geq 0
  \end{aligned} 
  $$
-</p>
+
 
  which simply says that producers in country $i$ attempt to maximize the value of their output (in price). Note that the price components are not a function of the country. We assume perfect market so these are world-prices. The linear program defined solves to one of its vertices (as linear programs do) and hence should lead to complete specialization for any given price.
 
 #### Consumption
 Similarly to what we did previously we write a consumption problem, but now utility is maximized by purchasing goods on the world market instead of directly. 
 
-<p>
+
 $$ 
  \begin{aligned} 
    \begin{aligned} 
@@ -115,19 +115,19 @@ $$
  \end{aligned} 
  \end{aligned} 
  $$
-</p>
+
 
 #### World General Equilibrium
 In order to link the four optimization problems (P.2) and (P.3) for both home and foreign countries we need to introduce a condition that ensure that the world market for each good clears. This is done by introducing market clearing conditions:
 
-<p>
+
 $$ 
  \begin{aligned} 
  C_X^H + C_X^F &= Q_X^H + Q_X^F \\
  C_Y^H + C_Y^F &= Q_Y^H + Q_Y^F \\
  \end{aligned} 
  $$
-</p>
+
 
 Which has a trivial interpretation: *everything sold is bought*. Computing a corresponding joint optimization problem is surprisingly complex (but can be done both analytically and numericall). 
 
@@ -142,14 +142,14 @@ The model is often presented as the successor to the Ricardian to an economy wit
 
 As in our Ricardian example we will look at two countries (A and B) with two goods (X and Y), but this time we will look at two factors of production (capital K and labour L) as well. Unlike in the Ricardian model in the HO model, we will assume identical technologies, as well as constant returns to scale (CRS). What will differ across countries this time is factor endowments: i.e. abundance of capital and labour. W.l.o.g, we assume Country A is capital-abundant relative to Country B. We will also assume that the goods are differentiated by their factor intensities, again, w.l.o.g we assume that good X is more capital intensive than good Y, that is:
 
-<p>
+
 $$ 
  \begin{aligned} 
  \frac{ K_X }{ L_X}  < 
  \frac{ K_Y }{ L_Y} 
  \end{aligned} 
  $$
-</p>
+
 
 We will assume perfect (international and national) competition.
 
@@ -157,31 +157,31 @@ We will assume perfect (international and national) competition.
 #### Production
 Now we will assume a constant return to scale production function for each good (independantly of the country, since we assume identical technology). Here there are two main possibilities: a Leontief production function or another Cobb Douglas production function, for keeping with the neoclassical flavour of this whole discussion we will work with a Cobb-Douglass function as well. So for country $i$ we get the following productions:
 
-<p>
+
 $$ 
  \begin{aligned} 
  Q_X^i &=F_X(L^i_X,K^i_X) = A_X {L^i_X}^{\alpha_X} {K^i_X}^{1-\alpha_X}\\
  Q_Y^i &=F_Y(L^i_Y,K^i_Y) =  A_Y {L^i_Y}^{\alpha_Y} {K^i_Y}^{1-\alpha_Y}
  \end{aligned} 
  $$
-</p>
+
 
  where $A^i$ is the total factor productivity and $\alpha$ is the output elasticity of labour. 
 
 We assume that companies perform unit-cost-minimization and solve, for each country $i$ and for each good $j$:
 
-<p>
+
 $$ 
  \begin{aligned} 
   \min_{L_j^i,K_j^i} &&wL_i + r K_i \\
   \text{s.t.} && F_j(L_j^i,K_j^i)=1 && (P.1)
  \end{aligned} 
  $$
-</p>
+
 
  where $r$ and $w$ are the costs of capital and labour respectively. Of course this solution works only because of the constant returns to scale (CRS) assumption (otherwise there would be a specific problem for each output volume). The solution to this problem gives the **unit input requirements** which depend on factor prices, under Cobb douglass specification they are:
 
-<p>
+
  $$ 
  \begin{aligned} 
 \text{for labour: } a_{L_i}(w,r) &=
@@ -192,72 +192,72 @@ $$
  \bigg(\frac{ (1- \alpha_i)w }{  \alpha_i r  }\bigg)^{\alpha_i}
  \end{aligned} 
  $$
-</p>
+
 
  
 Then comes the (as usual a bit hard to swallow for a heterodox) **zero (economic) profits condition**. The unit cost of each good equals its unit cost of production. This will give us the price of goods, for each good $j$ :
 
-<p>
+
 $$ 
  \begin{aligned} 
   p_j = c_j(w,r) = w  a_{L_j}(w,r) + r  a_{K_j}(w,r)
  \end{aligned} 
  $$
-</p>
+
 
 We assume that there are fixed per-country endowments of labour and capital, which means we can impose a factor market clearing condition, fo each country $i$:
 
-<p>
+
 $$ 
  \begin{aligned} 
  a_{L_X}^i (w^i,r^i) \cdot Q_X^i +  a_{L_Y}^i (w^i,r^i) \cdot Q_Y^i = L^i\\
  a_{K_X}^i (w^i,r^i) \cdot Q_X^i +  a_{K_Y}^i (w^i,r^i) \cdot Q_Y^i = K^i\\
  \end{aligned} 
  $$
-</p>
+
 
 #### Consumption
 Each country has a representative consumer, which owns all production factors and which maximizes their utility function. As in the Ricardian model, each country $i$ is assumed to have the same consumption utility function $U(C_X^i,C_Y^i)$ which is most often defined as a Cobb-Douglas function:
 
-<p>
+
 $$ 
  \begin{aligned} 
 U(C_X^i,C_Y^i) = (C_X^i)^{\beta}\cdot (C_Y^i)^{1-\beta}
  \end{aligned} 
  $$
-</p>
+
 
 There is a budget constraint given by:
 
-<p>
+
 $$ 
  \begin{aligned} 
 \text{Country Budget:}
 &&\overbrace{p_X C_X + p_Y C_Y}^{\text{Consumption}} = I = \overbrace{wL^i + rK^i }^{\text{Factor income}}
  \end{aligned} 
  $$
-</p>
+
 
  This gives rise to a a utility maximization problem:
 
-<p>
+
  $$ 
  \begin{aligned} 
  \max_{C_X^i,C_Y^i} &&  U^i(C_X^i,C_Y^i)\\
  \text{s.t.} && p_X C_X + p_Y C_Y \leq wL + rK && (P.2)
  \end{aligned} 
  $$
-</p>
+
 
 Solving the consumption problem gives marshallian demand functions, under our Cobb-Douglas specification we have:
 
-<p>
+
 $$ 
  \begin{aligned} 
  C_X(p_X,p_Y,I) = \beta \frac{ I }{ p_X } && C_Y(p_X,p_Y,I) (1-\beta) \frac{ I }{ p_Y } 
  \end{aligned} 
  $$
-</p>
+
 
 
 #### Autarky solution
@@ -274,7 +274,7 @@ Under the assumptions of identical technologies and free trade, the model predic
 
 The optimization problem is the following:
 
-<p>
+
 $$ 
  \begin{aligned} 
  \max_{
@@ -293,7 +293,7 @@ $$
  \end{aligned} 
  $$
 
-</p>
+
 
 Here are the **free trade equilibrium conditions**:  
 A free trade equilibrium is a set of world prices $(p_X,p_Y)$, country-specific outputs$(Q_X^A,Q_Y^A,Q_X^B,Q_Y^B)$, consumptions $(C_X^A,C_Y^A,C_X^B,C_Y^B)$, and factor prices$ (w^A,r^A,w^B,r^B)$ such that:
