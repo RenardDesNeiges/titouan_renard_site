@@ -3,13 +3,13 @@ title: 'About Me'
 keepAspectRatio: true
 ---
 
-
-
 ![](https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/22.svg)
 
+**[Download my CV in pdf format](/documents/TRENARD2026_09_CV.pdf)**
+
 ### Education
+- {{< marginpar >}}2024-2026{{< /marginpar >}}**Master in Political Economy of Capitalism**, Geneva, Switzerland, [UNIGE](https://www.unige.ch/sciences-societe/formations/masters-in-english/political-economy-of-capitalism)
 - {{< marginpar >}}2025{{< /marginpar >}}**Master in Economics** (Erasmus semester), Barcelona, Spain, [Universitat de Barcelona](https://www.ub.edu/school-economics/master-in-economics/)
-- {{< marginpar >}}2024-Present{{< /marginpar >}}**Master in Political Economy of Capitalism**, Geneva, Switzerland, [UNIGE](https://www.unige.ch/sciences-societe/formations/masters-in-english/political-economy-of-capitalism)
 - {{< marginpar >}}2023{{< /marginpar >}}**Master in Robotics with a Minor in Data Science**, Lausanne, Switzerland, [EPFL](https://www.epfl.ch/education/master/programs/robotics/)
 - {{< marginpar >}}2020{{< /marginpar >}}**Bachelor in Microengineering**, Lausanne, Switzerland, [EPFL](https://www.epfl.ch/education/bachelor/fr/programmes/microtechnique/)
 - {{< marginpar >}}2016{{< /marginpar >}}**Maturité** (French-English bilingual), Neuchâtel, Switzerland, [Lycée Denis de Rougemont](https://www.lddr.ch/etudes/maturite-bilingue/)
@@ -19,12 +19,12 @@ keepAspectRatio: true
 #### Internships
 - {{< marginpar >}}2023{{< /marginpar >}}**Research Intern** at [SYCAMORE](https://www.epfl.ch/labs/sycamore/) (Systems Control and Multiagent Optimization Research) at EPFL, under the supervision of Maryam Kamgarmour. Worked on the sample complexity of Inverse Reinfocement Learning (this work has been published, see the publications section).
 - {{< marginpar >}}2022{{< /marginpar >}}**Machine-Learning Intern** at [3HLE Robotics and Automation](https://3hle.ch/). Worked on deep-learning models for *6D pose estimation* from rgbd sensor data in the context of industrial robotics maniplation, under the supervision of Laurent Winkler.
-- {{< marginpar >}}2018{{< /marginpar >}}**Summer Internship**, at EPFL's [Biorobotics](https://www.epfl.ch/labs/biorob/) Lab, under the supervision of Alessandro Crespi. Implementation of a simple vision-based localization system using C++ and OpenCV.
+- {{< marginpar >}}2018{{< /marginpar >}}**Summer Internship**, at EPFL's [Biorobotics](https://www.epfl.ch/labs/biorob/) Lab, under the supervision o   Alessandro Crespi. Implementation of a simple vision-based localization system using C++ and OpenCV.
 #### Teaching
 - {{< marginpar >}}2023{{< /marginpar >}}**Course preparation** at the Laboratory of Computational Neuroscience, under the supervision of Alireza Modirshanechi. Designed the course project for the [Artifical Neural Networks and Reinfocement Learning](https://isa.epfl.ch/imoniteur_ISAP/!GEDPUBLICREPORTS.pdf?ww_i_reportModel=1696552884&ww_i_reportModelXsl=1696552963&ww_i_itemplan=3434532679&ww_c_langue=en) course at EPFL.
 - {{< marginpar >}}2018-2023{{< /marginpar >}}**Teaching-Assistant at EPFL** for [Newtonian Mechanics (Physique 1)](https://edu.epfl.ch/coursebook/fr/physique-generale-mecanique-PHYS-101-A), [Artifical Neural Networks and Reinfocement Learning](https://isa.epfl.ch/imoniteur_ISAP/!GEDPUBLICREPORTS.pdf?ww_i_reportModel=1696552884&ww_i_reportModelXsl=1696552963&ww_i_itemplan=3434532679&ww_c_langue=en), [Embedded Systems](https://edu.epfl.ch/coursebook/fr/systemes-embarques-et-robotique-MICRO-315), [Basics of Robotics](https://edu.epfl.ch/coursebook/fr/basics-of-robotics-for-manipulation-MICRO-450) and [Material Science Practicals](https://edu.epfl.ch/coursebook/fr/tp-de-materiaux-MSE-237).
 #### Other
-- {{< marginpar >}}Currently{{< /marginpar >}}**Webdesigner** as an independant, in various setting. A recent example has been work with "*Institut de Psychanalyse Charles Baudouin*"
+- {{< marginpar >}}2024-2026{{< /marginpar >}}**Webdesigner** as an independant, in various setting. A recent example has been work with "*Institut de Psychanalyse Charles Baudouin*"
 
 ### Relevant Projects
 {{< marginpar >}}These are the works which have not been published. For published works see the section publications.{{< /marginpar >}}
@@ -34,5 +34,5 @@ keepAspectRatio: true
 - {{< marginpar >}}2023{{< /marginpar >}}"*[Provable Convergence Guarantees for Constrained Inverse Reinforcement Learning](https://infoscience.epfl.ch/record/304492?ln=en)*", master project at *SYCAMORE* (Systems Control and Multiagent Optimization Research) at EPFL, under ther supervision of Prof. Maryam Kamgarmour. Proved convergence guarantees for a constrained IRL algorithm. (Project Graded 6/6)
 - {{< marginpar >}}2022{{< /marginpar >}}"*[Learning Motor Policies with Time Continuous Neural Networks](/documents/TRENARD2022_time_countinous_NN.pdf)*", semester project supervised by two labs, *BIOROB* (Biorobotics) and LCN (Laboratory of Computational Neuroscience) at EPFL, under ther supervision of Prof. Auke Ijspeert and Prof. Wulfram Gerstner. Work on the use of time continuous neural networks (Liquid Time-Constant Neural Networks) to solve control problems using reinforcement learning methods. (Project Graded 6/6)
 - {{< marginpar >}}2021{{< /marginpar >}}"*[Power-Optimal Trajectory Generation for Airborne Wind Energy](/documents/TRENARD2022_power_optimal_trajectories.pdf)*", semester project at *LA3* (EPFL), under ther supervision of Prof. Colin Jones. Worked on a strongly non-linear and non-convex optimization problem, implemented an appropriate iterative solver method to deal with the non-convexity in Matlab. (Project graded 6/6)
-- {{< marginpar >}}2021{{< /marginpar >}}"*[Deep Robust Navigation with Cognitive Mapping Visual Representations](/documents/TRENARD2023_VisualRepresentations.pdf)*", project done in the "*Visual Intelligence - Machines and Minds*" course at (EPFL), supervised by Prof. Amir Zamir.Development and implementation of a novel deep-reinfocement learning method for visual navigation.  [Presentation Video of the Project.](https://youtu.be/lYVNoB75AK4) (Project graded 5.75/6)
+- {{< marginpar >}}2021{{< /marginpar >}}"*[Deep Robust Navigation with Cognitive Mapping Visual Representations](/documents/TRENARD2022_VisualRepresentations.pdf)*", project done in the "*Visual Intelligence - Machines and Minds*" course at (EPFL), supervised by Prof. Amir Zamir.Development and implementation of a novel deep-reinfocement learning method for visual navigation.  [Presentation Video of the Project.](https://youtu.be/lYVNoB75AK4) (Project graded 5.75/6)
 
