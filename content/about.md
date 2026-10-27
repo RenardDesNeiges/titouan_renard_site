@@ -1,9 +1,6 @@
 ---
 title: 'About Me'
-keepAspectRatio: true
 ---
-
-![](https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/22.svg)
 
 **[Download my CV in pdf format](/documents/TRENARD2026_09_CV.pdf)**
 

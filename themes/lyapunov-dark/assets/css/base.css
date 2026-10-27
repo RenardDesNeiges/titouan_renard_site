@@ -1,0 +1,253 @@
+/* ==========================================================================
+   base.css — reset, body, links, headings, tables, lists, blockquote, code
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--color-bg);
+  /* Prevent root-level elastic overscroll from lifting the footer and
+     exposing the fixed motif canvas underneath it. */
+  overscroll-behavior-y: none;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-text);
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --------------------------------------------------------------------------
+   Links
+   -------------------------------------------------------------------------- */
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-hover);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   Headings & text
+   -------------------------------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+strong,
+b {
+  font-weight: 700;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+small {
+  font-size: 0.85em;
+  color: var(--color-muted);
+}
+
+hr {
+  margin: 2.5rem 0;
+  border: 0;
+  border-top: 1px solid var(--color-rule);
+}
+
+/* --------------------------------------------------------------------------
+   Lists
+   -------------------------------------------------------------------------- */
+
+ul,
+ol {
+  margin: 0 0 1em;
+  padding-left: 1.25em;
+}
+
+li {
+  margin: 0 0 0.35em;
+}
+
+li > ul,
+li > ol {
+  margin-top: 0.35em;
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Blockquote
+   -------------------------------------------------------------------------- */
+
+blockquote {
+  margin: 2rem 0;
+  padding-left: 1.25rem;
+  color: var(--color-muted);
+}
+
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Tables
+   -------------------------------------------------------------------------- */
+
+table {
+  border-collapse: collapse;
+  margin: 0 0 1.5em;
+  font-size: 0.95em;
+}
+
+th,
+td {
+  padding: 0.4em 0.65em;
+  border: 1px solid var(--color-rule);
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  font-weight: 700;
+}
+
+caption {
+  caption-side: bottom;
+  padding-top: 0.5em;
+  font-size: 0.85em;
+  color: var(--color-muted);
+  text-align: left;
+}
+
+/* --------------------------------------------------------------------------
+   Code
+   -------------------------------------------------------------------------- */
+
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+code {
+  padding: 0.1em 0.3em;
+  border: 1px solid var(--color-rule);
+}
+
+pre {
+  margin: 0 0 1.5em;
+  padding: 1em;
+  overflow-x: auto;
+  border: 1px solid var(--color-rule);
+  line-height: 1.5;
+}
+
+pre code {
+  padding: 0;
+  border: 0;
+  font-size: 1em;
+}
+
+/* --------------------------------------------------------------------------
+   Media
+   -------------------------------------------------------------------------- */
+
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+figure {
+  margin: 1.5em 0;
+}
+
+figcaption {
+  margin-top: 0.5em;
+  font-size: 0.85em;
+  color: var(--color-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Page shell
+   Layout CSS (home.css, post.css) overrides these values per body class.
+   -------------------------------------------------------------------------- */
+
+main.page {
+  position: relative;
+  z-index: 1;
+  padding: calc(var(--header-h) + 46px) var(--gutter-right) 0 var(--gutter-left);
+}
+
+/* Programmatically focused after an in-place navigation; the focus ring would
+   frame the whole page, so suppress it (keyboard focus elsewhere keeps its
+   :focus-visible outline). */
+main.page:focus {
+  outline: none;
+}
+
+/* --------------------------------------------------------------------------
+   Utilities
+   -------------------------------------------------------------------------- */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 900px) {
+  main.page {
+    padding: 110px 24px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  main.page {
+    padding: 96px 20px 0;
+  }
+}

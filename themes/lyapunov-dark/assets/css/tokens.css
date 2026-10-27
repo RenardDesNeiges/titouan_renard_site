@@ -1,0 +1,69 @@
+/* ==========================================================================
+   tokens.css — design tokens (single source of truth)
+   Dark only. No colour-scheme query, no theme toggle.
+   ========================================================================== */
+
+:root {
+  /* colour */
+  --color-bg: #111111;
+  --color-text: #ffffff;
+  --color-hover: #f4a405;
+  --color-motif: #ffffff;
+  --color-blob: #9a9a9a;
+  --color-rule: #2b2b2b;        /* card left rule, hairlines */
+  --color-muted: #9a9a9a;       /* dates, reading time, footer */
+
+  /* type */
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --fs-logo: 18px;
+  --fs-text: 14.5px;
+  --fs-note: 14.5px;
+  --fs-heading: 34px;
+  --fs-body: 15px;              /* long-form prose */
+  --lh-body: 1.7;
+  --fs-margin: 13px;
+  --lh-margin: 1.45;
+
+  /* layout */
+  --header-h: 73px;
+  --motif-w: 50vw;              /* overridden on doc pages */
+  --measure: 32rem;             /* prose column */
+  --note-w: 15rem;              /* margin-note column */
+  --note-gap: 2.5rem;
+  --gutter-right: 79px;
+  --gutter-left: 34px;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive token adjustments (breakpoints: 1200 / 1080 / 900 / 600 / 375)
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1200px) {
+  :root {
+    --fs-heading: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --fs-text: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --fs-logo: 15px;
+    --fs-text: 16px;
+    --fs-note: 14px;
+    --fs-heading: 30px;
+  }
+}
+
+@media (max-width: 375px) {
+  :root {
+    --fs-heading: 26px;
+    --gutter-left: 20px;
+    --gutter-right: 20px;
+  }
+}

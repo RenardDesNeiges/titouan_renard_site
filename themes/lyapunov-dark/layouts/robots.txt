@@ -1,0 +1,15 @@
+Sitemap: {{ "sitemap.xml" | absURL }}
+User-agent: *
+Disallow:
+
+{{- if not site.Params.AllowAIRobots }}
+  {{- $url := "https://raw.githubusercontent.com/ai-robots-txt/ai.robots.txt/main/robots.json" }}
+  {{- with try (resources.GetRemote $url) }}
+    {{- with .Err }}{{ warnf "robots.txt: %s" . }}{{ else }}
+      {{- range $ua, $_ := (unmarshal .Value.Content) }}
+User-agent: {{ $ua }}
+Disallow: /
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{- end }}

@@ -1,0 +1,22 @@
+# theme.toml — lyapunov-dark
+name = "Lyapunov Dark"
+license = "MIT"
+licenselink = "https://github.com/renarddesneiges/titouan_renard_site/blob/main/themes/lyapunov-dark/LICENSE"
+description = "A dark, minimal, typographic Hugo theme with an animated contour motif and Tufte-style margin notes."
+homepage = "https://titouanrenard.eu"
+demosite = ""
+tags = ["dark", "minimal", "blog", "personal", "tufte", "math"]
+features = [
+  "dark only",
+  "animated canvas motif",
+  "seeded blob thumbnails",
+  "tufte-style margin notes",
+  "katex",
+  "plotly",
+  "rss",
+]
+min_version = "0.146.0"
+
+[author]
+  name = "Titouan Renard"
+  homepage = "https://titouanrenard.eu"

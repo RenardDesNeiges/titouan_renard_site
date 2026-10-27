@@ -1,0 +1,153 @@
+/* ==========================================================================
+   header.css — fixed header, logo, nav, mobile menu
+   ========================================================================== */
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-h);
+  padding: 0 43px 0 23px;
+  background: var(--color-bg);
+}
+
+.logo {
+  font-size: var(--fs-logo);
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.logo:hover {
+  color: var(--color-hover);
+}
+
+/* --------------------------------------------------------------------------
+   Desktop nav
+   -------------------------------------------------------------------------- */
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  font-size: var(--fs-text);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.nav a {
+  transition: color 0.2s ease;
+}
+
+.nav a:hover {
+  color: var(--color-hover);
+  text-decoration: underline;
+}
+
+/* Current page, kept in sync by nav.js during in-place navigation. */
+#site-nav a[aria-current="page"] {
+  color: var(--color-hover);
+}
+
+/* --------------------------------------------------------------------------
+   Mobile toggle (three 16×1 px bars, no icon font)
+   Hidden by default: nav.js adds .js-nav so that, without JS, the nav simply
+   stays visible inline (progressive enhancement).
+   -------------------------------------------------------------------------- */
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: var(--color-text);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.nav-toggle:hover {
+  color: var(--color-hover);
+}
+
+.nav-toggle-bar {
+  display: block;
+  width: 16px;
+  height: 1px;
+  background: currentColor;
+}
+
+/* --------------------------------------------------------------------------
+   ≤900: tighter header padding and nav gap
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .site-header {
+    padding: 0 20px;
+  }
+
+  .nav {
+    gap: 20px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   ≤600: 64 px header, nav collapses into a full-width panel under the header
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 600px) {
+  .site-header {
+    height: 64px;
+    padding: 0 14px;
+  }
+
+  .nav {
+    gap: 11px;
+  }
+
+  .nav-toggle.js-nav {
+    display: inline-flex;
+  }
+
+  .nav-toggle.js-nav ~ .nav {
+    display: none;
+  }
+
+  .nav-toggle.js-nav[aria-expanded="true"] ~ .nav {
+    display: flex;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 4px 20px 16px;
+    background: var(--color-bg);
+    border-top: 1px solid var(--color-rule);
+    border-bottom: 1px solid var(--color-rule);
+    font-size: var(--fs-text);
+  }
+
+  .nav-toggle.js-nav[aria-expanded="true"] ~ .nav a,
+  .nav.is-open a {
+    display: block;
+    width: 100%;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .nav-toggle.js-nav[aria-expanded="true"] ~ .nav a:last-child,
+  .nav.is-open a:last-child {
+    border-bottom: 0;
+  }
+}

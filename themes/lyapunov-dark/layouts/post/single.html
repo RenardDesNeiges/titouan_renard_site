@@ -1,0 +1,9 @@
+{{ define "main" }}
+<article class="post-article" id="main-article">
+  <header class="post-header">
+    {{ partial "blob.html" (dict "seed" .RelPermalink "w" 280 "h" 240) }}
+    {{ partial "page/header.html" . }}
+  </header>
+  <div class="content">{{ .Content }}</div>
+</article>
+{{ end }}

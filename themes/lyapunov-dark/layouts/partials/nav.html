@@ -1,0 +1,7 @@
+<nav id="site-nav" class="nav" aria-label="Primary">
+  {{- range site.Menus.main.ByWeight }}
+    {{- $target := "" }}
+    {{- with .Params.target }}{{ $target = . }}{{ end }}
+  <a href="{{ .URL }}"{{ with $target }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }}>{{ .Name }}</a>
+  {{- end }}
+</nav>

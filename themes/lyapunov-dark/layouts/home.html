@@ -1,0 +1,15 @@
+{{ define "main" }}
+{{- /* baseof.html already renders the <main class="page"> element. */ -}}
+<div class="home">
+  <h1 class="visually-hidden">{{ site.Title }}</h1>
+
+  {{ partial "home/intro.html" . }}
+
+  <section class="blog" aria-labelledby="blog-heading">
+    <h2 id="blog-heading">{{ i18n "latestPosts" }}</h2>
+    {{ range sort (where site.RegularPages "Section" "post") "Date" "desc" }}
+      {{ partial "post-card.html" . }}
+    {{ end }}
+  </section>
+</div>
+{{ end }}

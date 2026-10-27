@@ -1,0 +1,4 @@
+{{- $json := .Get "json" -}}
+{{- $h := .Get "height" | default "400px" -}}
+<div id="plotly-{{ .Ordinal }}" class="plotly"
+     data-json="{{ $json | relURL }}" style="height:{{ $h }}; width:100%"></div>

@@ -1,0 +1,19 @@
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} — {{ site.Title }}{{ end }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
+<link rel="canonical" href="{{ .Permalink }}">
+
+{{- /* Fonts: linked, not @imported, so the request is discovered during the initial HTML parse. */}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+
+{{- /* Favicons: absolute URLs so they also resolve from /post/<slug>/. */}}
+{{- with site.Params.favicon }}
+  {{- with .ico }}<link rel="icon" href="{{ . | absURL }}" sizes="any">{{ end }}
+  {{- with .svg }}<link rel="icon" type="image/svg+xml" href="{{ . | absURL }}">{{ end }}
+  {{- with .png }}<link rel="icon" type="image/png" sizes="96x96" href="{{ . | absURL }}">{{ end }}
+  {{- with .apple }}<link rel="apple-touch-icon" href="{{ . | absURL }}">{{ end }}
+  {{- with .webmanifest }}<link rel="manifest" href="{{ . | absURL }}">{{ end }}
+  {{- with .appTitle }}<meta name="apple-mobile-web-app-title" content="{{ . }}">{{ end }}
+{{- end }}
+<meta name="theme-color" content="#111111">

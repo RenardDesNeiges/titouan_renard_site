@@ -1,0 +1,10 @@
+{{- /* Post title block: date, title, author + reading time. Safe for pages
+       without a date (the time element is omitted). */ -}}
+{{- with .Date }}{{ if not .IsZero }}
+<time datetime="{{ .Format "2006-01-02" }}">{{ . | time.Format ":date_long" }}</time>
+{{- end }}{{ end }}
+<h1>{{ .Title }}</h1>
+<p class="post-byline">
+  {{- with (or .Params.author site.Params.author.name) }}{{ . }}{{ end }}
+  <span>· {{ .ReadingTime }} {{ i18n "readingTime" }}</span>
+</p>

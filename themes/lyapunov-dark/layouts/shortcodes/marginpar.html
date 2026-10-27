@@ -1,0 +1,11 @@
+{{- $arg := .Get 0 }}
+{{- $abs := eq $arg "abs" }}
+{{- $force := eq $arg "safeHTML" }}
+{{- $id := printf "marginpar-%d" .Ordinal }}
+<input id="{{ $id }}" class="note-ctrl" type="checkbox" aria-label="{{ i18n "marginNote" }}" aria-controls="the-{{ $id }}">
+<label for="{{ $id }}" class="note-marker note-marker--glyph" tabindex="0" aria-controls="the-{{ $id }}" aria-label="{{ i18n "marginNote" }}"></label>
+{{- if $abs }}
+<div id="the-{{ $id }}" class="marginpar abs" role="note">{{ if $force }}{{ safeHTML .Inner }}{{ else }}{{ markdownify .Inner }}{{ end }}</div>
+{{- else }}
+<span id="the-{{ $id }}" class="marginpar" role="note">{{ if $force }}{{ safeHTML .Inner }}{{ else }}{{ markdownify .Inner }}{{ end }}</span>
+{{- end }}

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="{{ or site.Language.Locale site.Language.LanguageCode "en" }}">
+<head>{{ partial "head.html" . }}{{ block "head" . }}{{ end }}</head>
+<body class="{{ if .IsHome }}layout-home{{ else if eq .Section "post" }}layout-post{{ else }}layout-doc{{ end }}">
+  {{ partial "site-header.html" . }}
+  {{- /* Always emit the motif: it is fixed, so it must survive in-place page
+         swaps. Post pages hide it with CSS (.layout-post .motif). */ -}}
+  {{ partial "motif.html" . }}
+  <main id="{{ .Kind }}" class="page">{{ block "main" . }}{{ end }}</main>
+  {{ partial "site-footer.html" . }}
+  {{ partialCached "head/js.html" . }}
+</body>
+</html>

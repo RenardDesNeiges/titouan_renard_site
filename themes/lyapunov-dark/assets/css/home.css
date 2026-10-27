@@ -1,0 +1,277 @@
+/* ==========================================================================
+   home.css — intro, blog heading, post cards, thumbnails
+
+   The home page mirrors the doc-page grid (notes.css `.doc-article`): the
+   fixed motif panel owns the left of the viewport, and the article is exactly
+   `measure + note-gap + note-w` wide, centred in the remaining space. Intro,
+   headings and excerpts sit on the measure column; post blobs sit in the
+   15rem note gutter, i.e. on the same columns as the margin notes of
+   /about/ and /publications/.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Shell
+   baseof.html renders the <main class="page"> element; base.css supplies the
+   horizontal padding, the article (.home) owns the vertical rhythm.
+   -------------------------------------------------------------------------- */
+
+.layout-home {
+  /* Same panel width as the doc pages: never so wide that measure + gutter no
+     longer fit beside it. */
+  --motif-w: clamp(0px, calc(100vw - 850px), 34vw);
+}
+
+.layout-home main.page {
+  margin-left: var(--motif-w);
+  padding-top: 0;
+}
+
+/* Same hide point as the doc pages: the note gutter needs the width. */
+@media (max-width: 1200px) {
+  .layout-home main.page {
+    margin-left: 0;
+  }
+
+  .layout-home .motif {
+    display: none;
+  }
+}
+
+/* 1201–1350 px: notes.css trims the doc article's right padding so the 32rem
+   measure + 15rem gutter still fit beside the panel. Mirror that trim here so
+   both articles keep the same bounding box. */
+@media (min-width: 1201px) and (max-width: 1350px) {
+  .layout-home main.page {
+    padding-right: 60px;
+  }
+}
+
+/* The article shell — identical geometry to .doc-article. */
+.home {
+  width: calc(var(--measure) + var(--note-gap) + var(--note-w));
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 119px 0 110px;
+}
+
+/* --------------------------------------------------------------------------
+   Intro — aligned to the measure column, same typography as before.
+   -------------------------------------------------------------------------- */
+
+.intro {
+  max-width: var(--measure);
+  font-size: var(--fs-text);
+  line-height: 22px;
+  font-weight: 400;
+}
+
+.intro p {
+  margin: 0 0 22px;
+}
+
+.intro strong {
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   Blog heading
+   -------------------------------------------------------------------------- */
+
+.blog {
+  margin-top: 30px;
+}
+
+.blog h2 {
+  margin: 0 0 30px;
+  font-size: var(--fs-heading);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+/* --------------------------------------------------------------------------
+   Post cards
+   The card is as wide as the article; its rule + 20px indent is reclaimed by
+   .post-body so the text column keeps the 32rem measure and the blob column
+   keeps the 15rem gutter flush with the article's right edge.
+   -------------------------------------------------------------------------- */
+
+.post {
+  --post-indent: 21px; /* 1px rule + 20px text indent */
+
+  width: 100%;
+  margin-bottom: 63px;
+  padding-left: 20px;
+  border-left: 1px solid var(--color-rule);
+}
+
+.post:last-child {
+  margin-bottom: 0;
+}
+
+.post-meta {
+  display: block;
+  text-align: right;
+  font-size: var(--fs-note);
+  line-height: 20px;
+  color: var(--color-muted);
+}
+
+.post h3 {
+  margin: 34px 0 0;
+  font-size: var(--fs-heading);
+  font-weight: 700;
+  line-height: 44px;
+  letter-spacing: -0.01em;
+}
+
+.post h3 a {
+  transition: color 0.2s ease;
+}
+
+.post h3 a:hover {
+  color: var(--color-hover);
+}
+
+.post-body {
+  display: grid;
+  grid-template-columns: var(--measure) var(--note-w);
+  /* Fixed gap, exactly like the doc-page notes: in the 1201–1370 px band the
+     article is clamped narrower than measure + gap + note-w, so the note
+     column (like .marginpar) extends into main's right padding instead of
+     sliding left. This keeps the blob on the same x as the doc margin notes. */
+  column-gap: var(--note-gap);
+  align-items: start;
+  width: calc(100% + var(--post-indent));
+  margin-top: 26px;
+  margin-left: calc(-1 * var(--post-indent));
+}
+
+.post-body p {
+  max-width: 100%;
+  margin: 0;
+  padding-left: var(--post-indent);
+  font-size: var(--fs-text);
+  line-height: 19.5px;
+}
+
+.post-figure {
+  width: var(--note-w);
+}
+
+.post-figure canvas {
+  display: block;
+  width: 100%;
+  height: 208px;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive (breakpoints: 1200 / 1080 / 900 / 600 / 375)
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1200px) {
+  .post h3 {
+    line-height: 38px;
+  }
+}
+
+/* The note gutter collapses here on doc pages too. */
+@media (max-width: 1080px) {
+  .home {
+    width: calc(var(--measure) + 48px);
+    max-width: calc(100% - 48px);
+  }
+
+  .post-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: auto;
+    margin-left: 0;
+  }
+
+  .post-body p {
+    padding-left: 0;
+  }
+
+  /* Deliberate fix of the concept: the thumbnail stays visible (stacked)
+     instead of being hidden and never restored. */
+  .post-figure {
+    width: 100%;
+  }
+
+  .post-figure canvas {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+@media (max-width: 900px) {
+  .post {
+    margin-bottom: 48px;
+  }
+
+  .post-body {
+    gap: 18px;
+  }
+
+  .post-figure {
+    width: 100%;
+  }
+
+  .post-figure canvas {
+    width: 100%;
+    height: 180px;
+  }
+}
+
+@media (max-width: 600px) {
+  .home {
+    max-width: calc(100% - 40px);
+    padding-top: 96px;
+    padding-bottom: 80px;
+  }
+
+  .intro {
+    line-height: 21px;
+  }
+
+  .blog {
+    margin-top: 64px;
+  }
+
+  /* The left rule would crowd the text on narrow screens. */
+  .post {
+    --post-indent: 0px;
+
+    margin-bottom: 42px;
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .post-meta {
+    line-height: 18px;
+  }
+
+  .post h3 {
+    margin-top: 26px;
+  }
+
+  .post-body {
+    margin-top: 22px;
+  }
+
+  .post-body p {
+    line-height: 19px;
+  }
+}
+
+@media (max-width: 375px) {
+  .post h3 {
+    line-height: 34px;
+  }
+
+  .post-figure canvas {
+    height: 160px;
+  }
+}

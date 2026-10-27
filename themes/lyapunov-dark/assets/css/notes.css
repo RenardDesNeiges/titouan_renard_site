@@ -1,0 +1,263 @@
+/* ==========================================================================
+   notes.css — margin notes (marginpar / marginnote), epigraph, doc pages
+   ========================================================================== */
+
+/* The counter lives on the article so numbering restarts per page. */
+.post-article,
+.doc-article {
+  counter-reset: marginnote;
+}
+
+/* --------------------------------------------------------------------------
+   Controls
+   The checkbox stays focusable (no `hidden` attribute, no display:none) so
+   Space toggles it; the label is the visible/tappable marker.
+   -------------------------------------------------------------------------- */
+
+.note-ctrl {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Visually hidden on desktop, but still rendered so the counters increment. */
+.note-marker {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.note-marker--number {
+  counter-increment: marginnote;
+}
+
+.note-marker--glyph::before {
+  content: "∗";
+}
+
+/* --------------------------------------------------------------------------
+   Notes in the right gutter
+   -------------------------------------------------------------------------- */
+
+.marginpar {
+  float: right;
+  clear: right;
+  width: var(--note-w);
+  margin-top: 0;
+  margin-right: calc(-1 * (var(--note-w) + var(--note-gap)));
+  margin-bottom: 1em;
+  font-size: var(--fs-margin);
+  line-height: var(--lh-margin);
+  font-style: italic;
+  color: var(--color-text);
+}
+
+.marginpar p {
+  margin: 0 0 0.6em;
+}
+
+.marginpar > :last-child {
+  margin-bottom: 0;
+}
+
+/* Notes emitted as direct children of `.content` (a shortcode on its own line
+   after a heading) have the full article as containing block, not a 32rem
+   paragraph. Keep their right edge on the measure + gap + note-w line so they
+   line up with paragraph notes, but never push past the article/viewport when
+   the article itself is narrower than that line. */
+.content > .marginpar:not(.abs) {
+  margin-right: min(0px, calc(100% - (var(--measure) + var(--note-gap) + var(--note-w))));
+}
+
+/* Inline (non-gutter) variant. */
+.marginpar.abs {
+  float: none;
+  clear: none;
+  width: auto;
+  margin: 0 0 1.5em;
+  padding-left: var(--note-gap);
+}
+
+/* [n] prefix — the label increments the counter just before the note. */
+.note-marker--number + .marginpar::before {
+  content: "[" counter(marginnote) "]";
+  margin-right: 0.35em;
+  font-size: 0.85em;
+  font-style: normal;
+  color: var(--color-muted);
+}
+
+/* --------------------------------------------------------------------------
+   ≤1080: the gutter collapses; notes become tap-to-expand inline notes.
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1080px) {
+  .marginpar {
+    display: none;
+    float: none;
+    width: auto;
+    margin: 0 0 1em;
+    font-size: var(--fs-margin);
+    font-style: normal;
+    color: var(--color-muted);
+  }
+
+  .note-marker {
+    position: static;
+    display: inline;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+    padding: 1px 4px;
+    font: 0.72rem/1 var(--font-sans);
+    color: var(--color-hover);
+    vertical-align: super;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .note-marker--number::before {
+    content: "[" counter(marginnote) "]";
+  }
+
+  .note-ctrl:checked + .note-marker + .marginpar {
+    display: block;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Epigraph
+   -------------------------------------------------------------------------- */
+
+.epigraph {
+  margin: 2rem 0;
+  font-size: 0.95em;
+  color: var(--color-muted);
+}
+
+.epigraph blockquote {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.epigraph footer {
+  margin-top: 0.75em;
+  font-style: italic;
+  text-align: right;
+}
+
+/* --------------------------------------------------------------------------
+   Doc pages (about / publications)
+   base.css pads main.page by the header height; the article owns it here.
+   -------------------------------------------------------------------------- */
+
+/* The fixed motif panel owns the left half of the viewport: keep the doc
+   column to its right. The article supplies the vertical padding. */
+.layout-doc main.page {
+  margin-left: var(--motif-w);
+  padding-top: 0;
+}
+
+@media (max-width: 1200px) {
+  .layout-doc main.page {
+    margin-left: 0;
+  }
+}
+
+/* In the narrow band where the 34vw panel leaves less than the full
+   measure + note gutter, trim the right padding so the 15rem note column still
+   fits next to the 32rem measure. */
+@media (min-width: 1201px) and (max-width: 1350px) {
+  .layout-doc main.page {
+    padding-right: 60px;
+  }
+}
+
+.doc-article {
+  width: calc(var(--measure) + var(--note-gap) + var(--note-w));
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 119px 0 110px;
+}
+
+.doc-article > header {
+  max-width: var(--measure);
+  margin-bottom: 2.5rem;
+}
+
+.doc-article > header h1 {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+/* 404: centered block rather than a left-aligned CV-style column. */
+.doc-article.notfound {
+  width: auto;
+  max-width: var(--measure);
+  text-align: center;
+}
+
+.doc-article .content h1 {
+  font-size: 26px;
+}
+
+.doc-article .content h2 {
+  font-size: 24px;
+}
+
+.doc-article .content h3 {
+  margin-top: 2.2em;
+  font-size: 22px;
+}
+
+.doc-article .content h4 {
+  margin-top: 2.2em;
+  font-size: 17px;
+}
+
+/* --------------------------------------------------------------------------
+   Doc pages: narrower viewports (the motif is hidden ≤1200 in motif.css)
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1080px) {
+  .doc-article {
+    width: calc(var(--measure) + 48px);
+    max-width: calc(100% - 48px);
+  }
+}
+
+@media (max-width: 600px) {
+  .doc-article {
+    max-width: calc(100% - 40px);
+    padding-top: 96px;
+    padding-bottom: 80px;
+  }
+
+  .doc-article > header h1 {
+    font-size: 30px;
+  }
+
+  .doc-article .content h1 {
+    font-size: 24px;
+  }
+
+  .doc-article .content h2 {
+    font-size: 21px;
+  }
+
+  .doc-article .content h3 {
+    font-size: 20px;
+  }
+
+  .doc-article .content h4 {
+    font-size: 16px;
+  }
+}

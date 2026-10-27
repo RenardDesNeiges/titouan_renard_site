@@ -1,0 +1,8 @@
+<article class="post">
+  <time class="post-meta" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_long" }} <span class="reading-time">· {{ .ReadingTime }} {{ i18n "readingTime" }}</span></time>
+  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  <div class="post-body">
+    <p>{{ .Summary | plainify | truncate 320 }}</p>
+    <div class="post-figure">{{ partial "blob.html" (dict "seed" .RelPermalink "w" 244 "h" 208) }}</div>
+  </div>
+</article>

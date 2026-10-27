@@ -1,0 +1,66 @@
+/* ==========================================================================
+   motif.css — fixed contour panel + canvas sizing
+   The canvas is a decoration only: it never receives pointer events, never
+   participates in layout and is clipped by its fixed-size aside, so it can
+   never cause horizontal scrolling.
+   ========================================================================== */
+
+.motif {
+  position: fixed;
+  top: var(--header-h);
+  left: 0;
+  z-index: 0;
+  width: var(--motif-w);
+  height: calc(100vh - var(--header-h));
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Fill the panel width, but never shrink below the height-driven size, so the
+   contour field always covers the whole visible panel (the concept's ratio).
+   The canvas is taller than the aside when the panel is wide; the aside's
+   overflow:hidden crops the surplus at the bottom. */
+#motif-canvas {
+  display: block;
+  width: max(var(--motif-w), calc((100vh - var(--header-h)) * 0.8229));
+  aspect-ratio: 748 / 909;
+  height: auto;
+  max-width: none;
+}
+
+/* Post pages have no motif. The markup is always rendered (so the fixed panel
+   survives in-place navigation); hide it per body class instead. */
+.layout-post .motif {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   Doc pages (about / publications / 404): narrower panel so the prose column
+   plus the margin-note gutter still fit on a 1440 px viewport.
+   -------------------------------------------------------------------------- */
+
+.layout-doc {
+  /* Never let the panel eat so much width that measure + note gutter no longer
+     fit beside it (the 1201–1250 px band). 850px = 34px left padding + 792px
+     article + 24px right breathing room. Above that the 34vw design value
+     applies unchanged. */
+  --motif-w: clamp(0px, calc(100vw - 850px), 34vw);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive: the panel is the first thing to go when space gets tight.
+   -------------------------------------------------------------------------- */
+
+/* Doc pages need the width for measure + note gutter. */
+@media (max-width: 1200px) {
+  .layout-doc .motif {
+    display: none;
+  }
+}
+
+/* Home: below 900 px the prose column takes the full width. */
+@media (max-width: 900px) {
+  .layout-home .motif {
+    display: none;
+  }
+}

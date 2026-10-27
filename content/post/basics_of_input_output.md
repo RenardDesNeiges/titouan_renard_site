@@ -31,7 +31,6 @@ The key intution here is that the IO table is essentially (not exactly but prett
 
 
 The following properties hold:
-<p>
 $$ 
  \begin{aligned} 
 	y &= v_A+v_B \\	
@@ -42,7 +41,6 @@ $$
 	x_B' &= i_{AB}+i_{BB}+v_B\\
  \end{aligned} 
  $$
- <p>
 Further more, if monetary units are used: $x_A = x_A'$ and $x_B = x_B'$ hold.
 
 Here is a numerical example:
@@ -70,7 +68,6 @@ They are most often in physical units (here in kilotons of $CO_2$), here is a nu
 
 The key matrix is the technological coefficients' matrix $A$, which is constructed as follows (for a 2 sectors example):
 
-<p>
 $$ 
  \begin{aligned} 
  A=
@@ -89,7 +86,6 @@ $$
   \end{bmatrix} 
  \end{aligned} 
  $$
-</p>
 
 Let the emission vector be given by:
 
@@ -113,24 +109,20 @@ $$
  $$
 Let $x$ denote the total output vector and  $y$ the final demand vector:
 
-<p>
  $$ 
  \begin{aligned} 
   x = \begin{bmatrix} x_A \\ x_B \end{bmatrix} &&
    y = \begin{bmatrix} d_A \\ d_B \end{bmatrix} 
  \end{aligned} 
  $$
- </p>
 in our case:
 
-<p>
  $$ 
  \begin{aligned} 
  x = \begin{bmatrix} 1000 \\ 2000 \end{bmatrix} &&
  y = \begin{bmatrix} 350 \\ 1700 \end{bmatrix} 
  \end{aligned} 
  $$
- </p>
 
 Trivially the vector $x$ is element wise greater or equal to $y$ (because total output is final demand plus intermediary demand).
 
@@ -143,7 +135,6 @@ $$
  $$
 
 The reason the mutliplier has this form is because it solves:
-<p>
 $$ 
  \begin{aligned} 
  && x &= Ax + y \\
@@ -152,20 +143,16 @@ $$
  \iff &&  x &=  By
  \end{aligned} 
  $$
-</p>
 
 We can use the multiplier to recover total output 
 $t$ from final demand as follows:
-<p>
 $$ 
 \begin{aligned} 
 x = (I-A)^{-1} = B y
 \end{aligned} 
 $$
-</p>
 
 Numerically we have:
-<p>
  $$ 
  \begin{aligned} 
  \overbrace{\begin{bmatrix} 1000 \\ 2000 \end{bmatrix} }^{=t}
@@ -173,19 +160,15 @@ Numerically we have:
  \overbrace{\begin{bmatrix}  350 \\1700\end{bmatrix}}^{=y}
  \end{aligned} 
  $$
-</p>
 
 As per the satelite accounts they simply relate the total output to the use of the *satellite quantity*: 
-<p>
  $$ 
  \begin{aligned} 
  e = x \cdot b  
  \end{aligned} 
  $$
-</p>
 
 which for a two sector model decomposes as:
-<p>
  $$ 
  \begin{aligned} 
  e = \begin{bmatrix} 
@@ -198,10 +181,8 @@ which for a two sector model decomposes as:
  = \begin{bmatrix} x_A b_A\\ b_B b_B \end{bmatrix}
  = \begin{bmatrix} s_A \\ s_B \end{bmatrix}
  $$
-</p>
 
 This allows to compute total satellite variable (here the total CO2 emitted) as:
-<p>
 $$ 
  \begin{aligned} 
  s_ \text{tot} = b \cdot x
@@ -213,33 +194,27 @@ $$
  s_ \text{tot}  = s_A + s_B
  \end{aligned} 
  $$
-</p>
 
  
  and naturally, we can plug in the expression for total output from demand to get:
-<p>
  $$ 
  \begin{aligned} 
  s_ \text{tot} = b \overbrace{B y }^{=x} 
  \end{aligned} 
  $$
-</p>
 
 and hence we can get an "*emission multiplier*" $m_e$ as:
-<p>
  $$ 
  \begin{aligned} 
   m_e = b\cdot B 
  \end{aligned} 
  $$
-</p>
 
 which is a vector, which allows through a scalar product to compute emissions, simply as $s_ \text{tot}= m_e\cdot y$.
 
 ## Attributing emissions per sector:
 
 Consider the diagonal form of the vectors $b$ and $y$ (here expressed for the two sector example):
-<p>
 $$ 
  \begin{aligned} 
  \text{diag} (b) &= 
@@ -248,20 +223,16 @@ $$
  \begin{bmatrix} y_A & 0 \\  0 & y_B \end{bmatrix}\\
  \end{aligned} 
  $$
-</p>
 and consider the matrix $S$:
 
-<p>
 $$ 
 S=
 \begin{aligned} 
 & \text{diag} (b) \cdot B\cdot  \text{diag}(y)
 \end{aligned} 
 $$
-</p>
 
 This gives us the sattelite quantities associated with production in each sector A for use in sector B:
-<p>
 $$ 
 \begin{aligned} S=
 & \begin{bmatrix} b_A & 0 \\  0 & b_B \end{bmatrix}
@@ -272,4 +243,3 @@ $$
 \begin{bmatrix} y_A & 0 \\  0 & y_B \end{bmatrix} 
 \end{aligned} 
 $$
-</p>
