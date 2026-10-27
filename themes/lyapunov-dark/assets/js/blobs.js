@@ -17,6 +17,17 @@
   var RING_SCALES = [1, 0.8, 0.6, 0.4, 0.2]; // outer -> inner
   var DEFAULT_STROKE = '#9a9a9a';
 
+  // Hover "breathing": the outline grows slightly and wobbles as it breathes.
+  var HOVER_SCALE = 0.2; // extra scale at the top of the breath
+  var WOBBLE_AMPLITUDE = 0.075; // radial vertex wobble at the top of the breath
+  var BREATH_PERIOD = 2600; // ms per breath cycle
+  var HOVER_EASE_IN = 180; // ms time constant when the pointer arrives
+  var HOVER_EASE_OUT = 320; // ms time constant when it leaves
+  var HOVER_TRIGGER_RATIO = 1.25; // of the blob radius, to ignore empty corners
+  var HOVER_EPSILON = 0.002; // below this the rest frame is exact again
+  var TWO_PI = Math.PI * 2;
+  var REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)';
+
   // Stroke colour comes from the stylesheet, with a safe fallback.
   var STROKE_COLOR = DEFAULT_STROKE;
 
@@ -238,11 +249,33 @@
     return scaled;
   }
 
+  // Nudge every vertex in or out by a slow sine wave, giving the breathing
+  // outline a gentle organic wobble. Applied before centring and before
+  // buildSegments, so the curve stays closed and every ring stays concentric.
+  function perturbPoints(points, phase, amount) {
+    var perturbed = [];
+    var i;
+    var factor;
+
+    for (i = 0; i < points.length; i += 1) {
+      factor = 1 + amount * Math.sin(phase * 0.5 + i * 1.7);
+      perturbed.push({
+        x: points[i].x * factor,
+        y: points[i].y * factor
+      });
+    }
+
+    return perturbed;
+  }
+
   /* ======================================================================
      Rendering
      ====================================================================== */
 
-  function drawCanvas(canvas) {
+  // `motion` is optional. It either carries a hover animation state
+  // ({ hover, phase }) or an explicit scale ({ scale }) for the static
+  // reduced-motion frame. Without it the exact rest frame is drawn.
+  function drawCanvas(canvas, motion) {
     var ctx = canvas.getContext('2d');
     if (!ctx) {
       return;
@@ -272,7 +305,34 @@
 
     var maxRadius = Math.min(cssWidth, cssHeight) * MAX_RADIUS_RATIO;
     var seed = canvas.getAttribute('data-seed') || '';
-    var points = centerPoints(buildPoints(seed, maxRadius));
+    var points = buildPoints(seed, maxRadius);
+    var scale = 1;
+    var wobble = 0;
+    var phase = 0;
+
+    if (motion) {
+      if (typeof motion.scale === 'number') {
+        scale = motion.scale;
+      } else if (motion.hover > 0) {
+        phase = motion.phase || 0;
+        var breathe = 0.5 - 0.5 * Math.cos(phase);
+        scale = 1 + HOVER_SCALE * motion.hover * breathe;
+        wobble = WOBBLE_AMPLITUDE * motion.hover * breathe;
+      }
+    }
+
+    // Perturb before centring so the outline's bounding box is re-centred and
+    // the five rings remain concentric. Scaling after centring keeps the
+    // coordinates uniform, so every ring is stroked at the same 1 CSS px.
+    if (wobble > 0) {
+      points = perturbPoints(points, phase, wobble);
+    }
+
+    points = centerPoints(points);
+
+    if (scale !== 1) {
+      points = scalePoints(points, scale);
+    }
 
     ctx.save();
     ctx.translate(cssWidth / 2, cssHeight / 2);
@@ -291,11 +351,173 @@
   }
 
   /* ======================================================================
+     Hover motion
+     ====================================================================== */
+
+  // Checked on every hover start, so a changed OS setting is respected.
+  function prefersReducedMotion() {
+    return (
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia(REDUCED_MOTION_QUERY).matches
+    );
+  }
+
+  // Touch taps must not trigger the hover animation.
+  function isHoverPointer(event) {
+    return event.pointerType === 'mouse' || event.pointerType === 'pen';
+  }
+
+  // Only the blob itself is hoverable; the empty canvas corners are not.
+  function pointerInsideBlob(canvas, event) {
+    var rect = canvas.getBoundingClientRect();
+    var dx = event.clientX - (rect.left + rect.width / 2);
+    var dy = event.clientY - (rect.top + rect.height / 2);
+    var radius =
+      Math.min(rect.width, rect.height) * MAX_RADIUS_RATIO * HOVER_TRIGGER_RATIO;
+
+    return dx * dx + dy * dy <= radius * radius;
+  }
+
+  function startAnimation(item) {
+    if (item.frameId) {
+      return;
+    }
+    item.lastTime = 0;
+    item.frameId = window.requestAnimationFrame(function (time) {
+      animateFrame(item, time);
+    });
+  }
+
+  function animateFrame(item, time) {
+    item.frameId = 0;
+
+    var now = typeof time === 'number' ? time : Date.now();
+    if (!item.lastTime) {
+      item.lastTime = now;
+    }
+
+    var dt = now - item.lastTime;
+    item.lastTime = now;
+    if (dt < 0) dt = 0;
+    if (dt > 100) dt = 100; // don't lurch after a hidden tab
+
+    var tau = item.hoverTarget > item.hover ? HOVER_EASE_IN : HOVER_EASE_OUT;
+    item.hover += (item.hoverTarget - item.hover) * (1 - Math.exp(-dt / tau));
+
+    // The breath only advances while hovered; on leave the frozen phase is
+    // carried back to rest by the shrinking hover factor.
+    if (item.hoverTarget === 1) {
+      item.phase = (item.phase + (dt / BREATH_PERIOD) * TWO_PI) % TWO_PI;
+    }
+
+    if (item.hover < HOVER_EPSILON && item.hoverTarget === 0) {
+      // Settle on the exact static frame and stop the loop.
+      item.hover = 0;
+      item.phase = 0;
+      item.lastTime = 0;
+      drawCanvas(item.canvas);
+      return;
+    }
+
+    drawCanvas(item.canvas, { hover: item.hover, phase: item.phase });
+    item.frameId = window.requestAnimationFrame(function (nextTime) {
+      animateFrame(item, nextTime);
+    });
+  }
+
+  function setHoverTarget(item, target) {
+    if (item.hoverTarget === target) {
+      return;
+    }
+
+    item.hoverTarget = target;
+
+    // Reduced motion: one static, slightly enlarged frame; no loop at all.
+    if (prefersReducedMotion()) {
+      if (item.frameId) {
+        window.cancelAnimationFrame(item.frameId);
+        item.frameId = 0;
+      }
+      item.hover = 0;
+      item.phase = 0;
+      item.lastTime = 0;
+      if (target === 1) {
+        drawCanvas(item.canvas, { scale: 1 + HOVER_SCALE });
+      } else {
+        drawCanvas(item.canvas);
+      }
+      return;
+    }
+
+    if (target === 1) {
+      // Start each breath from its neutral point unless a fade-out is still
+      // running, in which case the loop picks up where it left off.
+      if (item.hover < HOVER_EPSILON) {
+        item.hover = 0;
+        item.phase = 0;
+      }
+      startAnimation(item);
+      return;
+    }
+
+    if (item.hover < HOVER_EPSILON) {
+      item.hover = 0;
+      item.phase = 0;
+      item.lastTime = 0;
+      drawCanvas(item.canvas);
+      return;
+    }
+
+    // Still fading out: the running loop draws the rest frame when it ends.
+    startAnimation(item);
+  }
+
+  // Attach hover listeners once per canvas; init() skips known canvases, so
+  // a canvas never gets two sets of listeners.
+  function setupHover(item) {
+    var canvas = item.canvas;
+
+    canvas.addEventListener('pointerenter', function (event) {
+      if (!isHoverPointer(event)) return;
+      setHoverTarget(item, pointerInsideBlob(canvas, event) ? 1 : 0);
+    });
+
+    canvas.addEventListener('pointermove', function (event) {
+      if (!isHoverPointer(event)) return;
+      setHoverTarget(item, pointerInsideBlob(canvas, event) ? 1 : 0);
+    });
+
+    canvas.addEventListener('pointerleave', function (event) {
+      if (!isHoverPointer(event)) return;
+      setHoverTarget(item, 0);
+    });
+  }
+
+  /* ======================================================================
      Setup / resize handling
      ====================================================================== */
 
   var items = [];
   var observer = null;
+
+  // Draw whichever frame the item should currently show. Used after a resize,
+  // which may land mid-animation, mid-fade, or on the reduced-motion frame.
+  function redraw(item) {
+    if (prefersReducedMotion()) {
+      drawCanvas(
+        item.canvas,
+        item.hoverTarget === 1 ? { scale: 1 + HOVER_SCALE } : undefined
+      );
+      return;
+    }
+
+    if (item.hoverTarget === 1 || item.hover > HOVER_EPSILON) {
+      startAnimation(item);
+      return;
+    }
+
+    drawCanvas(item.canvas);
+  }
 
   function schedule(item) {
     if (item.frameId) {
@@ -303,7 +525,7 @@
     }
     item.frameId = window.requestAnimationFrame(function () {
       item.frameId = 0;
-      drawCanvas(item.canvas);
+      redraw(item);
     });
   }
 
@@ -321,6 +543,10 @@
   function prune() {
     for (var itemIndex = items.length - 1; itemIndex >= 0; itemIndex -= 1) {
       if (!document.documentElement.contains(items[itemIndex].canvas)) {
+        if (items[itemIndex].frameId) {
+          window.cancelAnimationFrame(items[itemIndex].frameId);
+          items[itemIndex].frameId = 0;
+        }
         if (observer) {
           observer.unobserve(items[itemIndex].canvas);
         }
@@ -363,8 +589,17 @@
         continue;
       }
 
-      var item = { canvas: canvas, frameId: 0 };
+      var item = {
+        canvas: canvas,
+        frameId: 0,
+        hover: 0,
+        hoverTarget: 0,
+        phase: 0,
+        lastTime: 0
+      };
       items.push(item);
+
+      setupHover(item);
 
       if (observer) {
         observer.observe(canvas);

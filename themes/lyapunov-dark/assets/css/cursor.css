@@ -1,0 +1,47 @@
+/* ==========================================================================
+   cursor.css — negative-colour triangle pointer
+   The element is created by cursor.js only on fine pointers; the
+   `has-custom-cursor` class on <html> then hides the native cursor everywhere
+   (inputs included). White fill + mix-blend-mode: difference inverts whatever
+   is behind the 10×13 px triangle. Hidden until JS reports a position.
+   ========================================================================== */
+
+html.has-custom-cursor,
+html.has-custom-cursor body,
+html.has-custom-cursor body * {
+  cursor: none !important;
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2147483000;
+  width: 10px;
+  height: 13px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  opacity: 0;
+  transform: translate3d(-100px, -100px, 0);
+}
+
+.custom-cursor.is-visible {
+  opacity: 1;
+}
+
+.custom-cursor svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  max-width: none;
+}
+
+@media print {
+  .custom-cursor {
+    display: none;
+  }
+}
